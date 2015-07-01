@@ -1,0 +1,99 @@
+package com.vip.apitest.luxury.magento.Object;
+
+import java.util.List;
+import java.util.Map;
+
+public class CartItemDO {
+	public String item_id;
+	public String query_id;
+	public String id;
+	public String qty;
+	public String sku;
+	public String name;
+	public String is_available;
+	public String regular_price;
+	public String final_price;
+	public String img_url;
+	public String getItem_id() {
+		return item_id;
+	}
+	public void setItem_id(String item_id) {
+		this.item_id = item_id;
+	}
+	public String getQuery_id() {
+		return query_id;
+	}
+	public void setQuery_id(String query_id) {
+		this.query_id = query_id;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getQty() {
+		return qty;
+	}
+	public void setQty(String qty) {
+		this.qty = qty;
+	}
+	public String getSku() {
+		return sku;
+	}
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getIs_available() {
+		return is_available;
+	}
+	public void setIs_available(String is_available) {
+		this.is_available = is_available;
+	}
+	public String getRegular_price() {
+		return regular_price;
+	}
+	public void setRegular_price(String regular_price) {
+		this.regular_price = regular_price;
+	}
+	public String getFinal_price() {
+		return final_price;
+	}
+	public void setFinal_price(String final_price) {
+		this.final_price = final_price;
+	}
+	public String getImg_url() {
+		return img_url;
+	}
+	public void setImg_url(String img_url) {
+		this.img_url = img_url;
+	}
+	public String getBrand_name() {
+		return brand_name;
+	}
+	public void setBrand_name(String brand_name) {
+		this.brand_name = brand_name;
+	}
+	public String getStock() {
+		return stock;
+	}
+	public void setStock(String stock) {
+		this.stock = stock;
+	}
+	public List getCfg_opts() {
+		return cfg_opts;
+	}
+	public void setCfg_opts(List cfg_opts) {
+		this.cfg_opts = cfg_opts;
+	}
+	public String brand_name;
+	public String stock;
+	public List cfg_opts;
+
+}

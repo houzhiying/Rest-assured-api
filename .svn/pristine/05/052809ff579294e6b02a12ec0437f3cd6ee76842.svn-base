@@ -1,0 +1,5 @@
+﻿testname,pty,code,msg
+pty字段传空值,,0,Decoding failed: Syntax error
+pty字段传空格, ,0,Decoding failed: Syntax error
+pty字段传字母,zzzz,0,Decoding failed: Syntax error
+pty字段传特殊字符,(*&^%*%^#,0,Decoding failed: Syntax error

@@ -1,0 +1,100 @@
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"id": "http://jsonschema.net",
+	"required":false,
+	"properties":{
+		"code": {
+			"type":"number",
+			"id": "http://jsonschema.net/code",
+			"required":true
+		},
+		"data": {
+			"type":"object",
+			"id": "http://jsonschema.net/data",
+			"required":true,
+			"properties":{
+				"attribute_set_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/attribute_set_id",
+					"required":true
+				},
+				"created_at": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/created_at",
+					"required":true
+				},
+				"disable_auto_group_change": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/disable_auto_group_change",
+					"required":true
+				},
+				"email": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/email",
+					"required":true
+				},
+				"entity_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/entity_id",
+					"required":true
+				},
+				"entity_type_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/entity_type_id",
+					"required":true
+				},
+				"firstname": {
+					"type":"null",
+					"id": "http://jsonschema.net/data/firstname",
+					"required":false
+				},
+				"group_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/group_id",
+					"required":true
+				},
+				"increment_id": {
+					"type":"null",
+					"id": "http://jsonschema.net/data/increment_id",
+					"required":false
+				},
+				"is_active": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/is_active",
+					"required":false
+				},
+				"lastname": {
+					"type":"null",
+					"id": "http://jsonschema.net/data/lastname",
+					"required":false
+				},
+				"password_hash": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/password_hash",
+					"required":true
+				},
+				"store_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/store_id",
+					"required":true
+				},
+				"updated_at": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/updated_at",
+					"required":true
+				},
+				"website_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/website_id",
+					"required":true
+				}
+			}
+		},
+		"msg": {
+			"type":"string",
+			"id": "http://jsonschema.net/msg",
+			"required":false
+		}
+	}
+}

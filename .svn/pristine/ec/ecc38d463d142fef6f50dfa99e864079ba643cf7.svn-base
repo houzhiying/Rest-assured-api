@@ -1,0 +1,270 @@
+package com.vip.apitest.luxury.magento;
+
+import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.containsString;
+import static com.jayway.restassured.path.json.JsonPath.with;
+import static org.junit.Assert.assertThat;
+
+import java.io.InputStream;
+import java.math.BigDecimal;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import junit.framework.Assert;
+
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.unitils.reflectionassert.ReflectionAssert;
+import org.unitils.reflectionassert.ReflectionComparatorMode;
+
+import com.jayway.restassured.RestAssured;
+import com.vip.apitest.luxury.BaseTestCase;
+import com.vip.apitest.luxury.common.CommonMethod;
+import com.vip.apitest.luxury.magento.Object.CartItemDO;
+import com.vip.apitest.luxury.vlife.Object.BrandHomeInfoDO;
+import com.vip.apitest.luxury.vlife.Object.BrandHomeMenuDO;
+import com.vip.apitest.luxury.vlife.Object.BrandHomeVideoDO;
+import com.vip.apitest.utility.MD5Encoder;
+import com.vip.apitest.utility.MagentoDB;
+
+public class NewOrderTest extends BaseTestCase {
+	
+	@BeforeClass
+	public static void init() throws Exception{
+		CommonMethod.getUidAndToken();
+	}
+
+	/**
+	 * 生成订单 正例 
+	 * 
+	 */
+	@Test
+	public void testNewOrder() throws NoSuchAlgorithmException {
+//		String token=getToken("1404367934264@vip.com","2e1a21d4160faf57de5aacb908da2e1d");
+		cartDelete(CommonMethod.token);
+		cardAdd(CommonMethod.token);	
+		List cartItems = cartGet(CommonMethod.token);
+//		System.out.println(cartItems[0].getItem_id());
+//		System.out.println(cartItems[1].getItem_id());
+		
+		String json=given().request().
+			body("{\"order\":{\"products\":["+cartItems.get(0)+","+cartItems.get(0)+"],\"address_id\":98,\"payment_method\":\"alipay\",\"invoice\":{\"type\":\"2\",\"title\":\"上海supermna国际轮船有限公司\",\"content\":\"上海supermna国际轮船有限公司购买的万吨游轮\"}}}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").			
+		when().
+			post("http://shop-mapp.vipfashion.com/api/rest/checkout/order/from/b2c").prettyPrint();
+//		then().
+//			statusCode(200).
+//			body("code",equalTo(1));
+		String code=with(json).getString("code");
+		Assert.assertEquals("1", code);
+		String orderId =with(json).getString("data.order_id");
+		
+		Map m=VIPLUX_TEXT_MGT.queryForMap("select base_subtotal from mgt_sales_flat_order where increment_id="+orderId);
+		BigDecimal subtotal=(BigDecimal) m.get("base_subtotal");
+		Assert.assertEquals(new BigDecimal("46804.0000"), subtotal);
+	}
+	
+	
+	/**
+	 * 生成订单 反例
+	 * token错误 
+	 * 
+	 */
+	@Test
+	public void testNewOrder01() throws NoSuchAlgorithmException {
+//		String token=getToken("1404367934264@vip.com","2e1a21d4160faf57de5aacb908da2e1d");
+		cartDelete(CommonMethod.token);
+		cardAdd(CommonMethod.token);	
+		List cartItems=cartGet(CommonMethod.token);
+//		System.out.println(cartItems[0].getItem_id());
+//		System.out.println(cartItems[1].getItem_id());
+		
+		String json=given().request().
+			body("{\"order\":{\"products\":["+cartItems.get(0)+","+cartItems.get(1)+"],\"address_id\":90,\"payment_method\":\"checkmo\",\"invoice\":{\"type\":\"2\",\"title\":\"上海supermna国际轮船有限公司\",\"content\":\"上海supermna国际轮船有限公司购买的万吨游轮\"}}}").
+			header("accesstoken", "123").
+			header("Content-Type", "application/json; charset=utf-8").			
+		when().
+			post("http://shop-mapp.vipfashion.com/api/rest/checkout/order/from/b2c").prettyPrint();
+//		then().
+//			statusCode(500).
+//			body("data.error.message",containsString("not found"));
+		String actualMessage=with(json).getString("data.error.message");
+		Assert.assertEquals("[Access denied Not found customer guest]", actualMessage);
+		
+	}
+
+	/**
+	 * 生成订单 反例
+	 * 购物车itemid为空
+	 * 
+	 */
+	@Test
+	public void testNewOrder02() throws NoSuchAlgorithmException {
+//		String token=getToken("1404367934264@vip.com","2e1a21d4160faf57de5aacb908da2e1d");
+//		cartDelete(token);
+//		cardAdd(token);	
+//		CartItemDO[] cartItems=cartGet(token);
+//		System.out.println(cartItems[0].getItem_id());
+//		System.out.println(cartItems[1].getItem_id());
+		
+		String json=given().request().
+			body("{\"order\":{\"products\":[],\"address_id\":90,\"payment_method\":\"checkmo\",\"invoice\":{\"type\":\"2\",\"title\":\"上海supermna国际轮船有限公司\",\"content\":\"上海supermna国际轮船有限公司购买的万吨游轮\"}}}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").			
+		when().
+			post("http://shop-mapp.vipfashion.com/api/rest/checkout/order/from/b2c").prettyPrint();
+//		then().
+//			statusCode(500).
+//			body("data.error.message",containsString("not found"));
+		String actualMessage=with(json).getString("msg");
+		Assert.assertEquals("No products", actualMessage);
+	
+	}
+	
+	
+	/**
+	 * 生成订单 反例
+	 * 购物车itemid不存在
+	 * 
+	 */
+	@Test
+	public void testNewOrder03() throws NoSuchAlgorithmException {
+		
+		String json=given().request().
+			body("{\"order\":{\"products\":[1111111111,222222222],\"address_id\":90,\"payment_method\":\"checkmo\",\"invoice\":{\"type\":\"2\",\"title\":\"上海supermna国际轮船有限公司\",\"content\":\"上海supermna国际轮船有限公司购买的万吨游轮\"}}}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").			
+		when().
+			post("http://shop-mapp.vipfashion.com/api/rest/checkout/order/from/b2c").prettyPrint();
+		String actualMessage=with(json).getString("msg");
+		Assert.assertEquals("[he's dead, Jim!]", actualMessage);
+	
+	}
+	
+	
+	/**
+	 * 生成订单 反例
+	 * address_id空
+	 * 
+	 */
+	@Test
+	public void testNewOrder04() throws NoSuchAlgorithmException {
+		cartDelete(CommonMethod.token);
+		cardAdd(CommonMethod.token);	
+		List cartItems=cartGet(CommonMethod.token);
+		
+		String json=given().request().
+			body("{\"order\":{\"products\":["+cartItems.get(0)+","+cartItems.get(1)+"],\"address_id\":,\"payment_method\":\"checkmo\",\"invoice\":{\"type\":\"2\",\"title\":\"上海supermna国际轮船有限公司\",\"content\":\"上海supermna国际轮船有限公司购买的万吨游轮\"}}}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").			
+		when().
+			post("http://shop-mapp.vipfashion.com/api/rest/checkout/order/from/b2c").prettyPrint();
+		String actualMessage=with(json).getString("data.error.message");
+		Assert.assertEquals("[Decoding failed: Syntax error]", actualMessage);
+	
+	}
+	
+	
+	/**
+	 * 生成订单 反例
+	 * address_id不是该用户address_id
+	 * 
+	 */
+	@Test
+	public void testNewOrder05() throws NoSuchAlgorithmException {
+		cartDelete(CommonMethod.token);
+		cardAdd(CommonMethod.token);	
+		List cartItems=cartGet(CommonMethod.token);
+		
+		String json=given().request().
+			body("{\"order\":{\"products\":["+cartItems.get(0)+","+cartItems.get(0)+"],\"address_id\":7777778,\"payment_method\":\"checkmo\",\"invoice\":{\"type\":\"2\",\"title\":\"上海supermna国际轮船有限公司\",\"content\":\"上海supermna国际轮船有限公司购买的万吨游轮\"}}}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").			
+		when().
+			post("http://shop-mapp.vipfashion.com/api/rest/checkout/order/from/b2c").prettyPrint();
+		String actualMessage=with(json).getString("data.error.message");
+		assertThat(actualMessage,containsString("Customer Address is not valid2."));
+	
+	}
+	
+	
+	
+	
+/*	
+	public String getToken(String username,String md5Password){
+		
+        String requestStr = "{";
+        requestStr += "\"" + "appid" + "\":" + "\"" + CommonMethod.appid + "\"" + ",";
+        requestStr += "\"" + "username" + "\":" + "\"" + username + "\"" + ",";
+        requestStr += "\"" + "password" + "\":" + "\"" + md5Password + "\"" + ",";
+        requestStr += "\"" + "invite_code" + "\":" + "\"" + MagentoDB.getAvaliableInviteCode() + "\"";
+        requestStr += "}";
+        
+        String json=given().
+        body(requestStr).
+        header("Content-Type", "application/json; charset=utf-8").
+        when().
+        post("http://shop-mapp.vipfashion.com/api/rest/customer/login").prettyPrint();
+        
+		String token=with(json).getString("data.result.access_token");		
+		return token;		
+		
+	}*/
+	
+	public void cardAdd(String token){	
+		given().request().
+			body("{\"products\": [{\"id\": 261,\"qty\": 1,\"super_attribute\":{\"92\":16}},{\"id\": 270,\"qty\": 1,\"super_attribute\":{\"92\":17}}]}").
+			header("accesstoken", token).
+			header("Content-Type", "application/json; charset=utf-8").
+		when().
+			put("http://shop-mapp.vipfashion.com/api/rest/checkout/carts/user?method=add").prettyPrint();
+	}
+	
+	
+	public List cartGet(String token){
+		
+		String json=given().request().
+			header("accesstoken", token).			
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/checkout/carts/user").prettyPrint();
+		
+		List itemList=new ArrayList();
+		itemList.add(with(json).getString("data.products[0].item_id"));
+		itemList.add(with(json).getString("data.products[1].item_id"));
+		return itemList;
+	}
+	
+	
+	public void cartDelete(String token){
+		given().request().
+			header("accesstoken", token).
+		when().
+			delete("http://shop-mapp.vipfashion.com/api/rest/checkout/carts/user").prettyPrint();
+		
+	}
+	
+	
+	public void newOrder(String token){	
+		cartDelete(token);
+		cardAdd(token);	
+		List cartItems=cartGet(token);
+		
+		String json=given().request().
+			body("{\"order\":{\"products\":["+cartItems.get(0)+","+cartItems.get(1)+"],\"address_id\":90,\"payment_method\":\"checkmo\",\"invoice\":{\"type\":\"2\",\"title\":\"上海supermna国际轮船有限公司\",\"content\":\"上海supermna国际轮船有限公司购买的万吨游轮\"}}}").
+			header("accesstoken", token).
+			header("Content-Type", "application/json; charset=utf-8").			
+		when().
+			post("http://shop-mapp.vipfashion.com/api/rest/checkout/order/from/b2c").prettyPrint();
+
+		
+	}
+}

@@ -1,0 +1,4 @@
+﻿testName,ids,responseStatus,dataCode,message
+测试probuct ids传入正确的值(单个值),3,200,1,,
+probuct id传入空值,,200,1,,
+probuct id传入错误的值,2154654612,200,1,,

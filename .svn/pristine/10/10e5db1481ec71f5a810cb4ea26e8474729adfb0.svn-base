@@ -1,0 +1,69 @@
+package com.vip.apitest.luxury.vlife;
+
+import junit.framework.JUnit4TestAdapter;
+import junit.framework.TestSuite;
+
+import org.junit.Test;
+
+import com.vip.apitest.luxury.magento.AddressAddTest;
+import com.vip.apitest.luxury.magento.AddressGetTest;
+import com.vip.apitest.luxury.magento.AddressUpdateTest;
+import com.vip.apitest.luxury.magento.CartAddTest;
+import com.vip.apitest.luxury.magento.CartDeleteTest;
+import com.vip.apitest.luxury.magento.CartGetTest;
+import com.vip.apitest.luxury.magento.CartUpdateTest;
+import com.vip.apitest.luxury.magento.NewOrderTest;
+import com.vip.apitest.luxury.magento.OrderListTest;
+import com.vip.apitest.luxury.magento.ProductListTest;
+import com.vip.apitest.luxury.magento.ProductStockTest;
+import com.vip.apitest.luxury.magento.ProductTest;
+import com.vip.apitest.luxury.magento.ShopConfirmationTest;
+import com.vip.apitest.luxury.magento.ShopLoginTest;
+import com.vip.apitest.luxury.magento.ShopOrderTest;
+import com.vip.apitest.luxury.magento.ShopSkulistTest;
+import com.vip.apitest.luxury.magento.UserFavoriteTest;
+import com.vip.apitest.luxury.magento.UserTest;
+
+public class TestSuiteLuxuryVlifeCheck {
+	
+	@Test
+    public static TestSuite suite() {
+        TestSuite suite = new TestSuite("LuxuryVlifeTest");
+        
+        suite.addTest(new JUnit4TestAdapter(RecommendHomeTest.class));
+        suite.addTest(new JUnit4TestAdapter(RecommendIndexTest.class));
+        suite.addTest(new JUnit4TestAdapter(BrandMatchTest.class));
+        suite.addTest(new JUnit4TestAdapter(BrandHomeTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineCityListTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineShopInfo.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineShopListTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineCartTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineSubscribeTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineCheckSkuTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineInfoTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineOrderTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineDeleteTest.class));
+        suite.addTest(new JUnit4TestAdapter(OfflineCancelTest.class));
+        suite.addTest(new JUnit4TestAdapter(BrandCheckSkuTest.class));
+        suite.addTest(new JUnit4TestAdapter(BrandShowTest.class));
+        suite.addTest(new JUnit4TestAdapter(Brand_updateTest.class));
+        suite.addTest(new JUnit4TestAdapter(SystemSetupTest.class));
+        suite.addTest(new JUnit4TestAdapter(SystemFeedbackTest.class));
+        suite.addTest(new JUnit4TestAdapter(AddressAddTest.class));
+        suite.addTest(new JUnit4TestAdapter(AddressGetTest.class));
+        suite.addTest(new JUnit4TestAdapter(AddressUpdateTest.class));
+        suite.addTest(new JUnit4TestAdapter(CartAddTest.class));
+        suite.addTest(new JUnit4TestAdapter(CartGetTest.class));
+        suite.addTest(new JUnit4TestAdapter(CartUpdateTest.class));
+        suite.addTest(new JUnit4TestAdapter(CartDeleteTest.class));
+        suite.addTest(new JUnit4TestAdapter(NewOrderTest.class));
+        suite.addTest(new JUnit4TestAdapter(OrderListTest.class));
+        suite.addTest(new JUnit4TestAdapter(ProductListTest.class));
+        suite.addTest(new JUnit4TestAdapter(ProductStockTest.class));
+        suite.addTest(new JUnit4TestAdapter(ProductTest.class));
+        suite.addTest(new JUnit4TestAdapter(UserFavoriteTest.class));
+        suite.addTest(new JUnit4TestAdapter(UserTest.class));
+
+        return suite;
+    }
+}

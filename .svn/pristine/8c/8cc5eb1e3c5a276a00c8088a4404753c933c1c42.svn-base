@@ -1,0 +1,205 @@
+{
+  "type":"object",
+  "$schema": "http://json-schema.org/draft-03/schema",
+  "id": "http://jsonschema.net",
+  "required":true,
+  "properties":{
+    "code": {
+      "type":"number",
+      "id": "http://jsonschema.net/code",
+      "required":false
+    },
+    "data": {
+      "type":"object",
+      "id": "http://jsonschema.net/data",
+      "required":false,
+      "properties":{
+        "info": {
+          "type":"array",
+          "id": "http://jsonschema.net/data/info",
+          "required":false,
+          "items":
+            {
+              "type":"object",
+              "id": "http://jsonschema.net/data/info/0",
+              "required":false,
+              "properties":{
+                "background_image": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/background_image",
+                  "required":false
+                },
+                "brand_id": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/brand_id",
+                  "required":false
+                },
+                "description": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/description",
+                  "required":false
+                },
+                "id": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/id",
+                  "required":false
+                },
+                "link_url": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/link_url",
+                  "required":false
+                },
+                "name": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/name",
+                  "required":false
+                },
+                "online_time": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/online_time",
+                  "required":false
+                },
+                "platform": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/platform",
+                  "required":false
+                },
+                "position": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/position",
+                  "required":false
+                },
+                "template": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/template",
+                  "required":false
+                },
+                "title": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/info/0/title",
+                  "required":false
+                },
+                "type": {
+                  "type":"number",
+                  "id": "http://jsonschema.net/data/info/0/type",
+                  "required":false
+                }
+              }
+            }
+          
+
+        },
+        "menu": {
+          "type":"array",
+          "id": "http://jsonschema.net/data/menu",
+          "required":false,
+          "items":
+            {
+              "type":"object",
+              "id": "http://jsonschema.net/data/menu/0",
+              "required":false,
+              "properties":{
+                "id": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/menu/0/id",
+                  "required":false
+                },
+                "thumbnail": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/menu/0/thumbnail",
+                  "required":false
+                },
+                "title": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/menu/0/title",
+                  "required":false
+                },
+                "type": {
+                  "type":"number",
+                  "id": "http://jsonschema.net/data/menu/0/type",
+                  "required":false
+                }
+              }
+            }
+          
+
+        },
+        "video": {
+          "type":"array",
+          "id": "http://jsonschema.net/data/video",
+          "required":false,
+          "items":
+            {
+              "type":"object",
+              "id": "http://jsonschema.net/data/video/0",
+              "required":false,
+              "properties":{
+                "background_image": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/background_image",
+                  "required":false
+                },
+                "brand_id": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/brand_id",
+                  "required":false
+                },
+                "description": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/description",
+                  "required":false
+                },
+                "id": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/id",
+                  "required":false
+                },
+                "name": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/name",
+                  "required":false
+                },
+                "online_time": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/online_time",
+                  "required":false
+                },
+                "platform": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/platform",
+                  "required":false
+                },
+                "template": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/template",
+                  "required":false
+                },
+                "title": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/title",
+                  "required":false
+                },
+                "type": {
+                  "type":"number",
+                  "id": "http://jsonschema.net/data/video/0/type",
+                  "required":false
+                },
+                "video_url": {
+                  "type":"string",
+                  "id": "http://jsonschema.net/data/video/0/video_url",
+                  "required":false
+                }
+              }
+            }
+          
+
+        }
+      }
+    },
+    "msg": {
+      "type":"string",
+      "id": "http://jsonschema.net/msg",
+      "required":false
+    }
+  }
+}

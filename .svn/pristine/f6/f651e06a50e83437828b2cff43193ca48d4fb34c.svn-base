@@ -1,0 +1,53 @@
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"id": "http://jsonschema.net",
+	"required":true,
+	"properties":{
+		"code": {
+			"type":"number",
+			"id": "http://jsonschema.net/code",
+			"required":true
+		},
+		"data": {
+			"type":"array",
+			"id": "http://jsonschema.net/data",
+			"required":true,
+			"items":
+				{
+					"type":"object",
+					"id": "http://jsonschema.net/data/0",
+					"required":true,
+					"properties":{
+						"shop_name": {
+							"type":"string",
+							"id": "http://jsonschema.net/data/0/shop_name",
+							"required":true
+						},
+						"is_subscribe": {
+							"type":"string",
+							"id": "http://jsonschema.net/data/0/is_subscribe",
+							"required":true
+						},
+						"shop_id": {
+							"type":"string",
+							"id": "http://jsonschema.net/data/0/shop_id",
+							"required":true
+						},
+						"sku_id": {
+							"type":"string",
+							"id": "http://jsonschema.net/data/0/sku_id",
+							"required":true
+						}
+					}
+				}
+			
+
+		},
+		"msg": {
+			"type":"string",
+			"id": "http://jsonschema.net/msg",
+			"required":false
+		}
+	}
+}

@@ -1,0 +1,24 @@
+package com.vip.apitest.utility.db;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.sql.SQLException;
+
+import org.dbunit.DatabaseUnitException;
+
+
+public class CreateXml {
+	public static void main(String args[]) throws FileNotFoundException, IOException, SQLException, DatabaseUnitException {
+//		DbUnitTools.generateDataSetFile(
+//				DbEnum.VIPLUX_TEST.getDataSource("vipshop", "dWwkv%+!1cQf$FNy"),
+//				"brand_video", 
+//				"select * from brand_video where brand_id=8888");
+		
+		DbUnitTools.generateDataSetFile(
+				DbEnum.VIPLUX_TEST_MGT.getDataSource("vipshop", "dWwkv%+!1cQf$FNy"),
+				"mgt_catalog_product_entity_media_gallery_value", 
+				"select * from mgt_catalog_product_entity_media_gallery_value where value_id in(13,14,15)");
+
+	}
+
+}

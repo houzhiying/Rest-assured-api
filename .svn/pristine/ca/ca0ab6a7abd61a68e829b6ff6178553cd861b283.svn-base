@@ -1,0 +1,8 @@
+﻿testName,uid,code,msg
+uid字段传空时,,0,uid为空
+uid字段传空格, ,0,uid参数格式错误
+uid字段传前后带空格的值, 12485424 ,0,uid参数格式错误
+uid字段传字母,qqaazzzzz,0,uid参数格式错误
+uid字段传特殊字符,(*&%^$&#,0,uid参数格式错误
+uid字段传null,null,0,uid参数格式错误
+uid字段传true,true,0,uid参数格式错误

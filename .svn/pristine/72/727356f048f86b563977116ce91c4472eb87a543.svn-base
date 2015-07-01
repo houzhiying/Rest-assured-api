@@ -1,0 +1,167 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <mgt_catalog_product_entity entity_id="21" entity_type_id="4" attribute_set_id="9" type_id="simple" sku="BKN-M" has_options="0" required_options="0" created_at="2014-06-22 05:59:59.0" updated_at="2014-06-22 05:59:59.0"/>
+  <mgt_catalog_product_entity entity_id="22" entity_type_id="4" attribute_set_id="9" type_id="simple" sku="BKN-L" has_options="0" required_options="0" created_at="2014-06-22 06:00:25.0" updated_at="2014-06-22 06:00:25.0"/>
+  <mgt_catalog_product_entity entity_id="23" entity_type_id="4" attribute_set_id="9" type_id="simple" sku="BKN-S" has_options="0" required_options="0" created_at="2014-06-22 06:00:36.0" updated_at="2014-06-22 06:00:36.0"/>
+
+  <mgt_catalog_product_entity_datetime value_id="289" entity_type_id="4" attribute_id="77" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_datetime value_id="290" entity_type_id="4" attribute_id="78" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_datetime value_id="287" entity_type_id="4" attribute_id="93" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_datetime value_id="288" entity_type_id="4" attribute_id="94" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_datetime value_id="291" entity_type_id="4" attribute_id="104" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_datetime value_id="292" entity_type_id="4" attribute_id="105" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_datetime value_id="295" entity_type_id="4" attribute_id="77" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_datetime value_id="296" entity_type_id="4" attribute_id="78" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_datetime value_id="293" entity_type_id="4" attribute_id="93" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_datetime value_id="294" entity_type_id="4" attribute_id="94" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_datetime value_id="297" entity_type_id="4" attribute_id="104" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_datetime value_id="298" entity_type_id="4" attribute_id="105" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_datetime value_id="301" entity_type_id="4" attribute_id="77" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_datetime value_id="302" entity_type_id="4" attribute_id="78" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_datetime value_id="299" entity_type_id="4" attribute_id="93" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_datetime value_id="300" entity_type_id="4" attribute_id="94" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_datetime value_id="303" entity_type_id="4" attribute_id="104" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_datetime value_id="304" entity_type_id="4" attribute_id="105" store_id="0" entity_id="23"/>
+  
+  <mgt_catalog_product_entity_decimal value_id="160" entity_type_id="4" attribute_id="75" store_id="0" entity_id="21" value="99.0000"/>
+  <mgt_catalog_product_entity_decimal value_id="161" entity_type_id="4" attribute_id="76" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_decimal value_id="159" entity_type_id="4" attribute_id="80" store_id="0" entity_id="21" value="50.0000"/>
+  <mgt_catalog_product_entity_decimal value_id="162" entity_type_id="4" attribute_id="120" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_decimal value_id="164" entity_type_id="4" attribute_id="75" store_id="0" entity_id="22" value="99.0000"/>
+  <mgt_catalog_product_entity_decimal value_id="165" entity_type_id="4" attribute_id="76" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_decimal value_id="163" entity_type_id="4" attribute_id="80" store_id="0" entity_id="22" value="50.0000"/>
+  <mgt_catalog_product_entity_decimal value_id="166" entity_type_id="4" attribute_id="120" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_decimal value_id="168" entity_type_id="4" attribute_id="75" store_id="0" entity_id="23" value="99.0000"/>
+  <mgt_catalog_product_entity_decimal value_id="169" entity_type_id="4" attribute_id="76" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_decimal value_id="167" entity_type_id="4" attribute_id="80" store_id="0" entity_id="23" value="50.0000"/>
+  <mgt_catalog_product_entity_decimal value_id="170" entity_type_id="4" attribute_id="120" store_id="0" entity_id="23"/>
+
+  
+  <mgt_catalog_product_entity_int value_id="179" entity_type_id="4" attribute_id="96" store_id="0" entity_id="21" value="1"/>
+
+  <mgt_catalog_product_entity_int value_id="180" entity_type_id="4" attribute_id="102" store_id="0" entity_id="21" value="4"/>
+  <mgt_catalog_product_entity_int value_id="185" entity_type_id="4" attribute_id="121" store_id="0" entity_id="21" value="0"/>
+  <mgt_catalog_product_entity_int value_id="181" entity_type_id="4" attribute_id="92" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_int value_id="184" entity_type_id="4" attribute_id="133" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_int value_id="183" entity_type_id="4" attribute_id="134" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_int value_id="182" entity_type_id="4" attribute_id="138" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_int value_id="189" entity_type_id="4" attribute_id="92" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_int value_id="187" entity_type_id="4" attribute_id="96" store_id="0" entity_id="22" value="1"/>
+
+  <mgt_catalog_product_entity_int value_id="188" entity_type_id="4" attribute_id="102" store_id="0" entity_id="22" value="4"/>
+  <mgt_catalog_product_entity_int value_id="193" entity_type_id="4" attribute_id="121" store_id="0" entity_id="22" value="0"/>
+  <mgt_catalog_product_entity_int value_id="192" entity_type_id="4" attribute_id="133" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_int value_id="191" entity_type_id="4" attribute_id="134" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_int value_id="190" entity_type_id="4" attribute_id="138" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_int value_id="197" entity_type_id="4" attribute_id="92" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_int value_id="195" entity_type_id="4" attribute_id="96" store_id="0" entity_id="23" value="1"/>
+
+  <mgt_catalog_product_entity_int value_id="196" entity_type_id="4" attribute_id="102" store_id="0" entity_id="23" value="4"/>
+  <mgt_catalog_product_entity_int value_id="201" entity_type_id="4" attribute_id="121" store_id="0" entity_id="23" value="2"/>
+  <mgt_catalog_product_entity_int value_id="200" entity_type_id="4" attribute_id="133" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_int value_id="199" entity_type_id="4" attribute_id="134" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_int value_id="198" entity_type_id="4" attribute_id="138" store_id="0" entity_id="23"/>
+  
+  <mgt_catalog_product_entity_text value_id="176" entity_type_id="4" attribute_id="72" store_id="0" entity_id="21" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;"/>
+  <mgt_catalog_product_entity_text value_id="177" entity_type_id="4" attribute_id="73" store_id="0" entity_id="21" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;"/>
+  <mgt_catalog_product_entity_text value_id="179" entity_type_id="4" attribute_id="83" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_text value_id="180" entity_type_id="4" attribute_id="101" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_text value_id="181" entity_type_id="4" attribute_id="106" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_text value_id="178" entity_type_id="4" attribute_id="136" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_text value_id="182" entity_type_id="4" attribute_id="72" store_id="0" entity_id="22" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;"/>
+  <mgt_catalog_product_entity_text value_id="183" entity_type_id="4" attribute_id="73" store_id="0" entity_id="22" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;"/>
+  <mgt_catalog_product_entity_text value_id="185" entity_type_id="4" attribute_id="83" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_text value_id="186" entity_type_id="4" attribute_id="101" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_text value_id="187" entity_type_id="4" attribute_id="106" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_text value_id="184" entity_type_id="4" attribute_id="136" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_text value_id="188" entity_type_id="4" attribute_id="72" store_id="0" entity_id="23" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;"/>
+  <mgt_catalog_product_entity_text value_id="189" entity_type_id="4" attribute_id="73" store_id="0" entity_id="23" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;"/>
+  <mgt_catalog_product_entity_text value_id="191" entity_type_id="4" attribute_id="83" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_text value_id="192" entity_type_id="4" attribute_id="101" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_text value_id="193" entity_type_id="4" attribute_id="106" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_text value_id="190" entity_type_id="4" attribute_id="136" store_id="0" entity_id="23"/>
+  
+  <mgt_catalog_product_entity_varchar value_id="532" entity_type_id="4" attribute_id="71" store_id="0" entity_id="21" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;-M"/>
+  <mgt_catalog_product_entity_varchar value_id="537" entity_type_id="4" attribute_id="82" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_varchar value_id="538" entity_type_id="4" attribute_id="84" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_varchar value_id="543" entity_type_id="4" attribute_id="97" store_id="0" entity_id="21" value="m"/>
+  <mgt_catalog_product_entity_varchar value_id="545" entity_type_id="4" attribute_id="98" store_id="0" entity_id="21" value="m.html"/>
+  <mgt_catalog_product_entity_varchar value_id="544" entity_type_id="4" attribute_id="98" store_id="1" entity_id="21" value="m.html"/>
+  <mgt_catalog_product_entity_varchar value_id="539" entity_type_id="4" attribute_id="103" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_varchar value_id="540" entity_type_id="4" attribute_id="107" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_varchar value_id="541" entity_type_id="4" attribute_id="109" store_id="0" entity_id="21" value="container1"/>
+  <mgt_catalog_product_entity_varchar value_id="533" entity_type_id="4" attribute_id="117" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_varchar value_id="535" entity_type_id="4" attribute_id="118" store_id="0" entity_id="21" value="2"/>
+  <mgt_catalog_product_entity_varchar value_id="536" entity_type_id="4" attribute_id="119" store_id="0" entity_id="21" value="4"/>
+  <mgt_catalog_product_entity_varchar value_id="542" entity_type_id="4" attribute_id="122" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_varchar value_id="534" entity_type_id="4" attribute_id="135" store_id="0" entity_id="21"/>
+  <mgt_catalog_product_entity_varchar value_id="546" entity_type_id="4" attribute_id="71" store_id="0" entity_id="22" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;-L"/>
+  <mgt_catalog_product_entity_varchar value_id="551" entity_type_id="4" attribute_id="82" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_varchar value_id="552" entity_type_id="4" attribute_id="84" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_varchar value_id="557" entity_type_id="4" attribute_id="97" store_id="0" entity_id="22" value="l"/>
+  <mgt_catalog_product_entity_varchar value_id="559" entity_type_id="4" attribute_id="98" store_id="0" entity_id="22" value="l.html"/>
+  <mgt_catalog_product_entity_varchar value_id="558" entity_type_id="4" attribute_id="98" store_id="1" entity_id="22" value="l.html"/>
+  <mgt_catalog_product_entity_varchar value_id="553" entity_type_id="4" attribute_id="103" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_varchar value_id="554" entity_type_id="4" attribute_id="107" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_varchar value_id="555" entity_type_id="4" attribute_id="109" store_id="0" entity_id="22" value="container1"/>
+  <mgt_catalog_product_entity_varchar value_id="547" entity_type_id="4" attribute_id="117" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_varchar value_id="549" entity_type_id="4" attribute_id="118" store_id="0" entity_id="22" value="2"/>
+  <mgt_catalog_product_entity_varchar value_id="550" entity_type_id="4" attribute_id="119" store_id="0" entity_id="22" value="4"/>
+  <mgt_catalog_product_entity_varchar value_id="556" entity_type_id="4" attribute_id="122" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_varchar value_id="548" entity_type_id="4" attribute_id="135" store_id="0" entity_id="22"/>
+  <mgt_catalog_product_entity_varchar value_id="560" entity_type_id="4" attribute_id="71" store_id="0" entity_id="23" value="&#38889;&#22269;&#38050;&#25176;&#32858;&#25314;&#33016;&#27604;&#22522;&#23612;&#19977;&#20214;&#22871;&#40657;&#30333;&#26465;&#32441;&#27801;&#28393;&#32617;&#34923;&#36974;&#32922;&#26174;&#30246;&#22899;&#27891;&#34915;-S"/>
+  <mgt_catalog_product_entity_varchar value_id="565" entity_type_id="4" attribute_id="82" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_varchar value_id="566" entity_type_id="4" attribute_id="84" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_varchar value_id="571" entity_type_id="4" attribute_id="97" store_id="0" entity_id="23" value="s"/>
+  <mgt_catalog_product_entity_varchar value_id="573" entity_type_id="4" attribute_id="98" store_id="0" entity_id="23" value="s.html"/>
+  <mgt_catalog_product_entity_varchar value_id="572" entity_type_id="4" attribute_id="98" store_id="1" entity_id="23" value="s.html"/>
+  <mgt_catalog_product_entity_varchar value_id="567" entity_type_id="4" attribute_id="103" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_varchar value_id="568" entity_type_id="4" attribute_id="107" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_varchar value_id="569" entity_type_id="4" attribute_id="109" store_id="0" entity_id="23" value="container1"/>
+  <mgt_catalog_product_entity_varchar value_id="561" entity_type_id="4" attribute_id="117" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_varchar value_id="563" entity_type_id="4" attribute_id="118" store_id="0" entity_id="23" value="2"/>
+  <mgt_catalog_product_entity_varchar value_id="564" entity_type_id="4" attribute_id="119" store_id="0" entity_id="23" value="4"/>
+  <mgt_catalog_product_entity_varchar value_id="570" entity_type_id="4" attribute_id="122" store_id="0" entity_id="23"/>
+  <mgt_catalog_product_entity_varchar value_id="562" entity_type_id="4" attribute_id="135" store_id="0" entity_id="23"/>
+  
+  <mgt_cataloginventory_stock_status product_id="21" website_id="1" stock_id="1" qty="100.0000" stock_status="1"/>
+  <mgt_cataloginventory_stock_status product_id="22" website_id="1" stock_id="1" qty="100.0000" stock_status="1"/>
+  <mgt_cataloginventory_stock_status product_id="23" website_id="1" stock_id="1" qty="100.0000" stock_status="1"/>
+  
+  <mgt_cataloginventory_stock_item item_id="57" product_id="21" stock_id="1" qty="100.0000" min_qty="0.0000" use_config_min_qty="1" is_qty_decimal="0" backorders="0" use_config_backorders="1" min_sale_qty="1.0000" use_config_min_sale_qty="1" max_sale_qty="0.0000" use_config_max_sale_qty="1" is_in_stock="1" notify_stock_qty="0.0000" use_config_notify_stock_qty="1" manage_stock="0" use_config_manage_stock="1" stock_status_changed_auto="0" use_config_qty_increments="1" qty_increments="0.0000" use_config_enable_qty_inc="1" enable_qty_increments="0" is_decimal_divided="0"/>
+  <mgt_cataloginventory_stock_item item_id="58" product_id="22" stock_id="1" qty="100.0000" min_qty="0.0000" use_config_min_qty="1" is_qty_decimal="0" backorders="0" use_config_backorders="1" min_sale_qty="1.0000" use_config_min_sale_qty="1" max_sale_qty="0.0000" use_config_max_sale_qty="1" is_in_stock="1" notify_stock_qty="0.0000" use_config_notify_stock_qty="1" manage_stock="0" use_config_manage_stock="1" stock_status_changed_auto="0" use_config_qty_increments="1" qty_increments="0.0000" use_config_enable_qty_inc="1" enable_qty_increments="0" is_decimal_divided="0"/>
+  <mgt_cataloginventory_stock_item item_id="56" product_id="23" stock_id="1" qty="100.0000" min_qty="0.0000" use_config_min_qty="1" is_qty_decimal="0" backorders="0" use_config_backorders="1" min_sale_qty="1.0000" use_config_min_sale_qty="1" max_sale_qty="0.0000" use_config_max_sale_qty="1" is_in_stock="1" notify_stock_qty="0.0000" use_config_notify_stock_qty="1" manage_stock="0" use_config_manage_stock="1" stock_status_changed_auto="0" use_config_qty_increments="1" qty_increments="0.0000" use_config_enable_qty_inc="1" enable_qty_increments="0" is_decimal_divided="0"/>
+
+  <mgt_catalog_category_product_index category_id="2" product_id="21" position="0" is_parent="0" store_id="1" visibility="4"/>
+  <mgt_catalog_category_product_index category_id="2" product_id="22" position="0" is_parent="0" store_id="1" visibility="4"/>
+  <mgt_catalog_category_product_index category_id="2" product_id="23" position="0" is_parent="0" store_id="1" visibility="4"/>
+
+  <mgt_catalog_product_index_eav entity_id="21" attribute_id="121" store_id="1" value="0"/>
+  <mgt_catalog_product_index_eav entity_id="22" attribute_id="121" store_id="1" value="0"/>
+  <mgt_catalog_product_index_eav entity_id="23" attribute_id="121" store_id="1" value="0"/>
+  
+  <mgt_catalog_product_index_price entity_id="21" customer_group_id="0" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="21" customer_group_id="1" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="21" customer_group_id="2" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="21" customer_group_id="3" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="22" customer_group_id="0" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="22" customer_group_id="1" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="22" customer_group_id="2" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="22" customer_group_id="3" website_id="1" tax_class_id="0" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="23" customer_group_id="0" website_id="1" tax_class_id="2" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="23" customer_group_id="1" website_id="1" tax_class_id="2" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="23" customer_group_id="2" website_id="1" tax_class_id="2" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+  <mgt_catalog_product_index_price entity_id="23" customer_group_id="3" website_id="1" tax_class_id="2" price="99.0000" final_price="99.0000" min_price="99.0000" max_price="99.0000"/>
+
+  <mgt_catalog_product_website product_id="21" website_id="1"/>
+  <mgt_catalog_product_website product_id="22" website_id="1"/>
+  <mgt_catalog_product_website product_id="23" website_id="1"/>
+  
+  <mgt_catalog_product_entity_media_gallery value_id="13" attribute_id="88" entity_id="23" value="/b/e/beaty_2.jpg"/>
+  <mgt_catalog_product_entity_media_gallery value_id="14" attribute_id="88" entity_id="21" value="/b/e/beaty_2_1.jpg"/>
+  <mgt_catalog_product_entity_media_gallery value_id="15" attribute_id="88" entity_id="22" value="/b/e/beaty_2_2.jpg"/>
+
+  <mgt_catalog_product_entity_media_gallery_value value_id="13" store_id="0" position="1" disabled="0"/>
+  <mgt_catalog_product_entity_media_gallery_value value_id="14" store_id="0" position="1" disabled="0"/>
+  <mgt_catalog_product_entity_media_gallery_value value_id="15" store_id="0" position="1" disabled="0"/>
+</dataset>

@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "id": "http://jsonschema.net",
+  "type": "object",
+  "properties": {
+    "ok": {
+      "id": "http://jsonschema.net/ok",
+      "type": "boolean"
+    },
+    "code": {
+      "id": "http://jsonschema.net/code",
+      "type": "integer"
+    },
+    "dataMap": {
+      "id": "http://jsonschema.net/dataMap",
+      "type": "object",
+      "properties": {
+        "resultMsg": {
+          "id": "http://jsonschema.net/dataMap/resultMsg",
+          "type": "string"
+        },
+        "resultId": {
+          "id": "http://jsonschema.net/dataMap/resultId",
+          "type": "string"
+        },
+        "mobileToken": {
+          "id": "http://jsonschema.net/dataMap/mobileToken",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "required": [
+    "ok",
+    "code",
+    "dataMap"
+  ]
+}

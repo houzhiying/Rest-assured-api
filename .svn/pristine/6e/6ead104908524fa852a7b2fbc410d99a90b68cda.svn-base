@@ -1,0 +1,28 @@
+package com.vip.apitest.luxury;
+
+import org.databene.feed4junit.Feeder;
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.unitils.UnitilsJUnit4;
+
+import com.jayway.restassured.RestAssured;
+import com.vip.apitest.utility.db.DataSetTools;
+import com.vip.apitest.utility.db.JDBCTemplateFactory;
+
+@RunWith(Feeder.class)
+public class BaseTestCase{
+	protected JdbcTemplate VIPLUX_TEXT_VF=JDBCTemplateFactory.VIPLUX_TEST;
+	protected JdbcTemplate VIPLUX_TEXT_MGT=JDBCTemplateFactory.VIPLUX_TEST;
+	
+	protected static DataSetTools dataSetVipfashion=new DataSetTools("vipfashion");
+	protected static DataSetTools dataSetMgt=new DataSetTools("vipfashion_magento");
+	
+//	@Before
+//	public void setUp(){
+//		RestAssured.baseURI = "http://192.168.201.122";
+//		RestAssured.port = 80;
+//		
+//	}
+
+}

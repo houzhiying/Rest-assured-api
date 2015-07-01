@@ -1,0 +1,113 @@
+package com.vip.apitest.luxury.vlife.Object;
+
+public class BrandHomeInfoDO {
+	public String id;
+	public String brand_id;
+	public String name;
+	public String title;
+	public String description;
+	public String background_image;
+//	public String link_url;
+	public String position;
+	public String platform;
+	public String template;
+	public String is_recommend;
+	public String getIs_recommend() {
+		return is_recommend;
+	}
+
+	public void setIs_recommend(String is_recommend) {
+		this.is_recommend = is_recommend;
+	}
+
+	public String type;
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getBrand_id() {
+		return brand_id;
+	}
+
+	public void setBrand_id(String brand_id) {
+		this.brand_id = brand_id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getBackground_image() {
+		return background_image;
+	}
+
+	public void setBackground_image(String background_image) {
+		this.background_image = background_image;
+	}
+//
+//	public String getLink_url() {
+//		return link_url;
+//	}
+//
+//	public void setLink_url(String link_url) {
+//		this.link_url = link_url;
+//	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getPlatform() {
+		return platform;
+	}
+
+	public void setPlatform(String platform) {
+		this.platform = platform;
+	}
+
+	public String getTemplate() {
+		return template;
+	}
+
+	public void setTemplate(String template) {
+		this.template = template;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+}

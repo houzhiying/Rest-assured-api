@@ -1,0 +1,113 @@
+package com.vip.apitest.luxury.magento;
+
+import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.io.InputStream;
+
+import org.databene.benerator.anno.Source;
+import org.junit.Test;
+
+import com.vip.apitest.luxury.BaseTestCase;
+
+public class ProductListTest extends BaseTestCase{
+	
+//	@Before
+//	public void setUp(){
+//		RestAssured.baseURI = "http://shop-mapp.vipfashion.com";
+//	}
+
+	@Test
+	public void testGetProductList(){
+    	System.out.println("获取指定品牌下的商品列表");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/product_list.json");
+		given().
+			params("brand_id", 2).
+			params("category_id",2).
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/products").
+		then().
+		 	statusCode(200).
+		 	body("code",equalTo(1)).
+		 	body(matchesJsonSchema(jsonschema));			
+    }
+	
+	@Test
+	public void testGetProductListNoBrandId(){
+    	System.out.println("获取指定品牌下的商品列表(BrandId字段不传)");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/product_list.json");
+		given().
+//			params("brand_id", 2).
+			params("category_id",2).
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/products").
+		then().
+		 	statusCode(200).
+		 	body("code",equalTo(1)).
+		 	body(matchesJsonSchema(jsonschema));			
+    }
+	
+	@Test
+	public void testGetProductListNoCategoryId(){
+    	System.out.println("获取指定品牌下的商品列表(CategoryId字段不传)");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/product_list.json");
+		given().
+			params("brand_id", 2).
+//			params("category_id",2).
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/products").
+		then().
+		 	statusCode(200).
+		 	body("code",equalTo(1)).
+		 	body(matchesJsonSchema(jsonschema));			
+    }
+	
+	@Test
+	public void testGetProductListNoCategoryIdAndBrandId(){
+    	System.out.println("获取指定品牌下的商品列表(CategoryId和BrandId字段不传)");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/product_list.json");
+		given().
+//			params("brand_id", 2).
+//			params("category_id",2).
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/products").
+		then().
+		 	statusCode(200).
+		 	body("code",equalTo(1)).
+		 	body(matchesJsonSchema(jsonschema));			
+    }
+	
+	@Test
+	@Source("data/vlife/product_list_parameters_null.csv")
+	public void testGetProductListParametersNull(String testName, String brandId,String categoryId,int responseStatus,int dataCode){
+    	System.out.println(testName);
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/product_list.json");
+		given().
+			params("brand_id", brandId).
+			params("category_id",categoryId).
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/products").
+		then().
+		 	statusCode(responseStatus).
+		 	body("code",equalTo(dataCode)).
+		 	body(matchesJsonSchema(jsonschema));			
+    }
+	
+	@Test
+	@Source("data/vlife/product_list_parameters_error.csv")
+	public void testGetProductListParametersError(String testName, String brandId,String categoryId,int responseStatus,int dataCode,String data,String message){
+    	System.out.println(testName);
+		given().
+			params("brand_id", Integer.parseInt(brandId)).
+			params("category_id",Integer.parseInt(categoryId)).
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/products").
+		then().
+		 	statusCode(responseStatus).
+		 	body("code",equalTo(dataCode)).
+		 	body("data",equalTo(data)).
+		 	body("msg",equalTo(message));
+    }
+	
+}

@@ -1,0 +1,13 @@
+﻿testName,shop_id,uid,code,msg
+shop_id字段传空时,,12485424,0,shop_id为空
+shop_id字段传空格, ,12485424,0,shop_id格式错误
+shop_id字段传字母,qqazz,12485424,0,shop_id格式错误
+shop_id字段传特殊字符,(*&%^*$,12485424,0,shop_id格式错误
+shop_id字段传null,null,12485424,0,shop_id格式错误
+shop_id字段传true,true,12485424,0,shop_id格式错误
+uid字段传空时,1,,0,uid为空
+uid字段传空格,1, ,0,uid参数格式错误
+uid字段传字母,1,qqaazzzzz,0,uid参数格式错误
+uid字段传特殊字符,1,(*&%^$&#,0,uid参数格式错误
+uid字段传null,1,null,0,uid参数格式错误
+uid字段传true,1,true,0,uid参数格式错误

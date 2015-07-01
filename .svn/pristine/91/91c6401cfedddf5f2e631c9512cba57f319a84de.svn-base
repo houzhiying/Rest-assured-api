@@ -1,0 +1,63 @@
+package com.vip.apitest.luxury.vlife.Object;
+
+public class RecommendHomeDO {
+	private String id;
+
+	private String name;
+	private String title;
+	private String description;
+	private String background_image;
+	private String link_url;
+	private String type;
+	private String template;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getBackground_image() {
+		return background_image;
+	}
+	public void setBackground_image(String background_image) {
+		this.background_image = background_image;
+	}
+	public String getLink_url() {
+		return link_url;
+	}
+	public void setLink_url(String link_url) {
+		this.link_url = link_url;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
+	public String getTemplate() {
+		return template;
+	}
+	public void setTemplate(String template) {
+		this.template = template;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+}

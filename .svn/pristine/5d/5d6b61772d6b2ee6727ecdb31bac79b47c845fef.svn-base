@@ -1,0 +1,7 @@
+test_piont,platform,username,password,invite_code,expected_code
+test invite_code,APP,vipshqa009@test.com,cc03e747a6afbbcbf8be7668acfebee5,11111111,40003,
+test used invite_code,APP,vipshqa009@test.com,cc03e747a6afbbcbf8be7668acfebee5,1017,40003
+test non invite_code,APP,vipshqa009@test.com,cc03e747a6afbbcbf8be7668acfebee5,,40003
+test invite_code,WEB,vipshqa009@test.com,cc03e747a6afbbcbf8be7668acfebee5,11111111,40003,
+test used invite_code,WEB,vipshqa009@test.com,cc03e747a6afbbcbf8be7668acfebee5,1017,40003
+test non invite_code,WEB,vipshqa009@test.com,cc03e747a6afbbcbf8be7668acfebee5,,40003

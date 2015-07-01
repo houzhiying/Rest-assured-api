@@ -1,0 +1,10 @@
+package com.vip.apitest.luxury.common;
+
+/**
+ * Created by Administrator on 2014/6/26.
+ */
+public class User {
+    public String account;
+    public int userId;
+    public String token;
+}

@@ -1,0 +1,76 @@
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"id": "http://jsonschema.net",
+	"required":true,
+	"properties":{
+		"code": {
+			"type":"number",
+			"id": "http://jsonschema.net/code",
+			"required":true
+		},
+		"data": {
+			"type":"object",
+			"id": "http://jsonschema.net/data",
+			"required":true,
+			"properties":{
+				"products": {
+					"type":"object",
+					"id": "http://jsonschema.net/data/products",
+					"required":true,
+					"properties":{
+						"10": {
+							"type":"object",
+							"id": "http://jsonschema.net/data/products/10",
+							"required":true,
+							"properties":{
+								"id": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/products/10/id",
+									"required":true
+								},
+								"is_in_stock": {
+									"type":"boolean",
+									"id": "http://jsonschema.net/data/products/10/is_in_stock",
+									"required":true
+								},
+								"qty": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/products/10/qty",
+									"required":true
+								}
+							}
+						},
+						"3": {
+							"type":"object",
+							"id": "http://jsonschema.net/data/products/3",
+							"required":true,
+							"properties":{
+								"id": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/products/3/id",
+									"required":true
+								},
+								"is_in_stock": {
+									"type":"boolean",
+									"id": "http://jsonschema.net/data/products/3/is_in_stock",
+									"required":true
+								},
+								"qty": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/products/3/qty",
+									"required":true
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"msg": {
+			"type":"string",
+			"id": "http://jsonschema.net/msg",
+			"required":false
+		}
+	}
+}

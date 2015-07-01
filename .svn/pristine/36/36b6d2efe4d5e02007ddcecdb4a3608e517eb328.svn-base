@@ -1,0 +1,17 @@
+﻿testname,id,pty,attribute_id,value_id,accesstoken,code,msg
+id字段传空值,,1,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+id字段传空格, ,1,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+id字段传特殊字符,&^%$#@,1,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+pty字段传空值,3,,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+pty字段传空格,3, ,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+pty字段传特殊字符,3,*&^%$#,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+attribute_id字段传空值,3,1,,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+attribute_id字段传空格,3,1, ,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+attribute_id字段传特殊字符,3,1,$%^&*(,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+value_id字段传空值,3,1,15,,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+value_id字段传空格,3,1,15, ,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+value_id字段传特殊字符,3,1,15,*&^$%^$%*(,688b0ed90a119c0597ad0590977a309a52b5f3e9,0,Decoding failed: Syntax error
+token字段传空,3,1,15,13,,403,Access denied
+token字段传特殊字符,3,1,15,13,）（—*%*—%……#E%……#,0,Invalid URI supplied
+token字段传null,3,1,15,13,null,403,Access denied
+token字段传true,3,1,15,13,true,403,Access denied

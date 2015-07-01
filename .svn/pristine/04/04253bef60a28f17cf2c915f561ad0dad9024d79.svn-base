@@ -1,0 +1,29 @@
+package com.vip.apitest.utility.db;
+
+
+import org.apache.commons.dbcp.BasicDataSource;
+
+
+public class SchemaDataSource extends BasicDataSource {
+
+	private String schemaName;
+
+	public SchemaDataSource() {
+
+	}
+
+	public SchemaDataSource(String driverClassName, String url,
+			String username, String password, String schemaName) {
+		super();
+		this.schemaName = schemaName;
+	}
+
+	public String getSchemaName() {
+		return schemaName;
+	}
+
+	public void setSchemaName(String schemaName) {
+		this.schemaName = schemaName;
+	}
+
+}

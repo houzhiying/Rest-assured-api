@@ -1,0 +1,76 @@
+package com.vip.apitest.luxury.magento;
+
+import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.path.json.JsonPath.with;
+import static org.hamcrest.Matchers.equalTo;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.vip.apitest.luxury.BaseTestCase;
+import com.vip.apitest.luxury.common.CommonMethod;
+
+public class CartDeleteTest extends BaseTestCase{
+	
+	@BeforeClass
+	public static void init() throws Exception{
+		CommonMethod.getUidAndToken();
+	}
+	
+	@Test
+	public void testCartDelete(){
+//		String token=getToken("jerry.hou@vipshop.com","cbb4b0621085c0333a42656532b8863d");
+		cardAdd(CommonMethod.token);
+		cartGet(CommonMethod.token);
+		given().request().
+			header("accesstoken", CommonMethod.token).
+		when().
+			delete("http://shop-mapp.vipfashion.com/api/rest/checkout/carts/user").
+		then().
+			statusCode(200).
+			body("code", equalTo(1)).
+			body("data.msg", equalTo("success"));		
+		cartGet(CommonMethod.token);
+		
+		
+	}
+	
+	
+	
+	public String getToken(String username,String md5Password){
+		String paramStr = "/" + username;
+		paramStr += "/" + md5Password;
+		String json=given().param("invite_code", "0120")
+				.when()
+				.get("http://shop-mapp.vipfashion.com/api/rest/customer/login"
+						+ paramStr).prettyPrint();
+				
+		String token=with(json).getString("data.result.access_token");		
+		return token;		
+		
+	}
+	
+	public void cardAdd(String token){		
+		given().request().
+			body("{\"products\": [{\"id\": 22,\"qty\": 1,\"super_attribute\":{\"138\": 178}},{\"id\": 23,\"qty\": 1,\"super_attribute\":{\"138\": 198}}]}").
+			header("accesstoken", token).
+			header("Content-Type", "application/json; charset=utf-8").
+		when().
+			put("http://shop-mapp.vipfashion.com/api/rest/checkout/carts/user?method=add").prettyPrint();
+//		then().
+//			statusCode(200).
+//			body("code", equalTo(1)).
+//			body("data.msg", equalTo("success"));
+	}
+	
+	
+	public void cartGet(String token){
+		
+		given().request().
+			header("accesstoken", token).
+			
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/checkout/carts/user").prettyPrint();
+	}
+
+}

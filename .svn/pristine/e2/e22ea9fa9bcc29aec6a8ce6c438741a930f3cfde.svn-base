@@ -1,0 +1,65 @@
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"id": "http://jsonschema.net",
+	"required":true,
+	"properties":{
+		"code": {
+			"type":"number",
+			"id": "http://jsonschema.net/code",
+			"required":true
+		},
+		"data": {
+			"type":"object",
+			"id": "http://jsonschema.net/data",
+			"required":true,
+			"properties":{
+				"data": {
+					"type":"array",
+					"id": "http://jsonschema.net/data/data",
+					"required":true,
+					"items":
+						{
+							"type":"object",
+							"id": "http://jsonschema.net/data/data/0",
+							"required":true,
+							"properties":{
+								"brand_id": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/data/0/brand_id",
+									"required":true
+								},
+								"name": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/data/0/name",
+									"required":true
+								},
+								"thumbnail": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/data/0/thumbnail",
+									"required":true
+								},
+								"title": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/data/0/title",
+									"required":true
+								}
+							}
+						}
+					
+
+				},
+				"total": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/total",
+					"required":true
+				}
+			}
+		},
+		"msg": {
+			"type":"string",
+			"id": "http://jsonschema.net/msg",
+			"required":false
+		}
+	}
+}

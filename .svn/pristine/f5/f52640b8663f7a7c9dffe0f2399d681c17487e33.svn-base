@@ -1,0 +1,30 @@
+package com.vip.apitest.utility.db;
+
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+
+
+
+
+
+public enum DbEnum {
+
+	VIPLUX_TEST("com.mysql.jdbc.Driver", Consts.DB_URL+"vipfashion?relaxAutoCommit=true&zeroDateTimeBehavior=convertToNull"),
+	
+	VIPLUX_TEST_MGT("com.mysql.jdbc.Driver", Consts.DB_URL+"vipfashion_magento?relaxAutoCommit=true&zeroDateTimeBehavior=convertToNull");
+	
+	private String driverClassName;
+	private String url;
+
+	DbEnum(String driverClassName, String url) {
+		this.driverClassName = driverClassName;
+		this.url = url;
+	}
+
+	@SuppressWarnings("deprecation")
+	public DataSource getDataSource(String username, String password) {
+		return new DriverManagerDataSource(driverClassName,url,username,password);
+	}
+
+}

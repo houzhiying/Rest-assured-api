@@ -1,0 +1,241 @@
+package com.vip.apitest.luxury.vlife;
+
+import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static org.hamcrest.Matchers.equalTo;
+import static com.jayway.restassured.path.json.JsonPath.with;
+
+import java.io.InputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+import org.unitils.reflectionassert.ReflectionAssert;
+import org.unitils.reflectionassert.ReflectionComparatorMode;
+
+import com.jayway.restassured.RestAssured;
+import com.vip.apitest.luxury.BaseTestCase;
+import com.vip.apitest.luxury.common.CommonMethod;
+import com.vip.apitest.luxury.vlife.Object.BrandHomeInfoDO;
+import com.vip.apitest.luxury.vlife.Object.BrandHomeMenuDO;
+import com.vip.apitest.luxury.vlife.Object.BrandHomeVideoDO;
+import com.vip.apitest.utility.MD5Encoder;
+
+public class BrandHomeTest extends BaseTestCase{
+	
+	@Before
+	public void setUp(){
+		RestAssured.baseURI = "http://mapp.vipfashion.com/oi";
+		RestAssured.port = 80;
+		
+	}
+	
+	/**
+	 * 品牌首页目录、视频、资讯、搭配
+	 * 正例
+	 * 校验schema
+	 * 
+	 */
+	@Test
+	public void testBrandHome() throws NoSuchAlgorithmException{
+		dataSetVipfashion.initDataSet("src/test/java/com/vip/apitest/luxury/vlife/dataset/BrandHome.xml");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/brand_home.json");
+		String sign = MD5Encoder.encodeByMD5("brand" + "home" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("brand_id", "8888").
+		when().
+			get("/brand/home/").prettyPrint();
+//		then().
+//			statusCode(200).
+//			body("code", equalTo(1)).
+//			body(matchesJsonSchema(jsonschema));
+	}
+	
+	
+	/**
+	 * 品牌首页目录、视频、资讯、搭配
+	 * 正例
+	 * 返回正确首页目录、视频、资讯、搭配
+	 * 
+	 */
+	@Test
+	public void testBrandHome01() throws NoSuchAlgorithmException{
+		dataSetVipfashion.initDataSet("src/test/java/com/vip/apitest/luxury/vlife/dataset/BrandHome.xml");
+		String sign = MD5Encoder.encodeByMD5("brand" + "home" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String json=given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("brand_id", "8888").
+		when().
+			get("/brand/home/").asString();
+		
+		//实际结果
+
+		BrandHomeInfoDO[] actualInfo=with(json).getObject("data.info", BrandHomeInfoDO[].class);
+		BrandHomeVideoDO[] actualVideo=with(json).getObject("data.video", BrandHomeVideoDO[].class);
+		BrandHomeMenuDO[] actualMenu=with(json).getObject("data.menu", BrandHomeMenuDO[].class);
+		
+		//预期结果info
+		List<BrandHomeInfoDO> exptBrandHomeInfoList=new ArrayList<BrandHomeInfoDO>();
+		//构造javaben
+		BrandHomeInfoDO info1=new BrandHomeInfoDO();
+		info1.setId("16");
+		info1.setBrand_id("8888");
+		info1.setName("");
+		info1.setTitle("刺绣性感收副乳聚拢调整型文胸超薄款内衣");
+		info1.setDescription("刺绣性感收副乳聚拢调整型文胸超薄款内衣");
+		info1.setBackground_image("{\"iphone\":\"\\/upload\\/p18r104i6e10vrnh1obm13g4se25.jpg\",\"ipad\":\"\\/upload\\/p18r104sqh80m1eildh712dq6vk5.jpg\",\"pc\":\"\\/upload\\/p18r1058g5k4lljgbi91o62iua5.jpg\"}");
+		info1.setPosition("0");
+		info1.setPlatform("7");
+		info1.setTemplate("3");
+		info1.setType("0");
+		
+		BrandHomeInfoDO info2=new BrandHomeInfoDO();
+		info2.setId("17");
+		info2.setBrand_id("8888");
+		info2.setName("");
+		info2.setTitle("品牌资讯2");
+		info2.setDescription("专卖专卖20年");
+		info2.setBackground_image("{\"iphone\":\"\\/upload\\/p18r13iebbkgk1a7sidv6btpvc5.jpg\",\"ipad\":\"\\/upload\\/p18r13ind11s79qq3v4f1u8m1pbg5.jpg\",\"pc\":\"\\/upload\\/p18r13itn717ap1271s0v10i9qd5.jpg\"}");
+		info2.setPosition("0");
+		info2.setPlatform("7");
+		info2.setTemplate("3");
+		info2.setType("0");		
+		exptBrandHomeInfoList.add(info1);
+		exptBrandHomeInfoList.add(info2);
+		//转换成对象数组
+		BrandHomeInfoDO[] exptInfo=exptBrandHomeInfoList.toArray(new BrandHomeInfoDO[2]);
+		
+		//预期结果Video
+		List<BrandHomeVideoDO> exptBrandHomeVideoList=new ArrayList<BrandHomeVideoDO>();
+		BrandHomeVideoDO video1=new BrandHomeVideoDO();
+		video1.setId("8");
+		video1.setBrand_id("8888");
+		video1.setName("");
+		video1.setTitle("刺绣性感收副乳聚拢调整型文胸超薄款内衣视频");
+		video1.setDescription("刺绣性感收副乳聚拢调整型文胸超薄款内衣视频");
+		video1.setBackground_image("{\"iphone\":\"\\/upload\\/p18r10akn41fbb1h7h1sk1a1bq785.jpg\",\"ipad\":\"\\/upload\\/p18r10arhft6kt4m1pr81ri944f5.jpg\",\"pc\":\"\\/upload\\/p18r10b2ec1va72ai135gq591td35.jpg\"}");
+		video1.setVideo_url("http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4");
+		video1.setPlatform("7");
+		video1.setTemplate("3");
+		video1.setType("1");
+		
+		BrandHomeVideoDO video2=new BrandHomeVideoDO();
+		video2.setId("9");
+		video2.setBrand_id("8888");
+		video2.setName("");
+		video2.setTitle("品牌视频2");
+		video2.setDescription("品牌视频2");
+		video2.setBackground_image("{\"iphone\":\"\\/upload\\/p18r13kg7f16v1hmh157co1sh215.jpg\",\"ipad\":\"\\/upload\\/p18r13knlkebpuplsgr1msk19i55.jpg\",\"pc\":\"\\/upload\\/p18r13kv1l1jn910761mmm1c36198b5.jpg\"}");
+		video2.setVideo_url("http://static.tripbe.com/videofiles/20121214/9533522808.f4v.mp4");
+		video2.setPlatform("7");
+		video2.setTemplate("3");
+		video2.setType("1");
+		exptBrandHomeVideoList.add(video1);
+		exptBrandHomeVideoList.add(video2);
+		
+		BrandHomeVideoDO[] exptVideo=exptBrandHomeVideoList.toArray(new BrandHomeVideoDO[2]); 
+		
+		
+		//预期结果menu
+		List<BrandHomeMenuDO> exptBrandHomeMenuList=new ArrayList<BrandHomeMenuDO>();
+		BrandHomeMenuDO menu1=new BrandHomeMenuDO();
+		menu1.setId("5");
+		menu1.setTitle("刺绣性感收副乳聚拢调整型文胸超薄款内衣搭配");
+		menu1.setThumbnail("");
+		menu1.setType("2");
+		
+		BrandHomeMenuDO menu2=new BrandHomeMenuDO();
+		menu2.setId("16");
+		menu2.setTitle("刺绣性感收副乳聚拢调整型文胸超薄款内衣");
+		menu2.setThumbnail("");
+		menu2.setType("0");
+		
+		BrandHomeMenuDO menu3=new BrandHomeMenuDO();
+		menu3.setId("8");
+		menu3.setTitle("刺绣性感收副乳聚拢调整型文胸超薄款内衣视频");
+		menu3.setThumbnail("");
+		menu3.setType("1");
+		
+		BrandHomeMenuDO menu4=new BrandHomeMenuDO();
+		menu4.setId("17");
+		menu4.setTitle("品牌资讯2");
+		menu4.setThumbnail("");
+		menu4.setType("0");
+		
+		BrandHomeMenuDO menu5=new BrandHomeMenuDO();
+		menu5.setId("9");
+		menu5.setTitle("品牌视频2");
+		menu5.setThumbnail("");
+		menu5.setType("1");
+		
+		exptBrandHomeMenuList.add(menu1);
+		exptBrandHomeMenuList.add(menu2);
+		exptBrandHomeMenuList.add(menu3);
+		exptBrandHomeMenuList.add(menu4);
+		exptBrandHomeMenuList.add(menu5);
+		
+		BrandHomeMenuDO[] exptMenu=exptBrandHomeMenuList.toArray(new BrandHomeMenuDO[5]);
+		
+		//断言
+//		ReflectionAssert.assertReflectionEquals(exptInfo,actualInfo,ReflectionComparatorMode.IGNORE_DEFAULTS);
+//		ReflectionAssert.assertReflectionEquals(exptVideo,actualVideo,ReflectionComparatorMode.IGNORE_DEFAULTS);
+//		ReflectionAssert.assertReflectionEquals(exptMenu,actualMenu,ReflectionComparatorMode.IGNORE_DEFAULTS);
+		
+	}
+	
+	/**
+	 * 品牌首页目录、视频、资讯、搭配
+	 * 反例
+	 * brand_id为空
+	 * 
+	 */
+	@Test
+	public void testBrandHome02() throws NoSuchAlgorithmException{
+//		dataSetVipfashion.initDataSet("src/test/java/com/vip/apitest/luxury/vlife/dataset/BrandHome.xml");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/brand_home.json");
+		String sign = MD5Encoder.encodeByMD5("brand" + "home" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("brand_id", "").
+		when().
+			get("/brand/home/").
+		then().
+			statusCode(200).
+			body("code", equalTo(0)).
+			body("msg",equalTo("品牌id为空"));
+	}
+	
+	
+	/**
+	 * 品牌首页目录、视频、资讯、搭配
+	 * 反例
+	 * brand_id不存在
+	 * 
+	 */
+	@Test
+	public void testBrandHome03() throws NoSuchAlgorithmException{
+//		dataSetVipfashion.initDataSet("src/test/java/com/vip/apitest/luxury/vlife/dataset/BrandHome.xml");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/brand_home.json");
+		String sign = MD5Encoder.encodeByMD5("brand" + "home" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("brand_id", "11111111111111").
+		when().
+			get("/brand/home/").
+		then().
+			statusCode(200).
+			body("code", equalTo(1)).
+			body("data.menu",equalTo(""));
+	}
+
+}

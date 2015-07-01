@@ -1,0 +1,90 @@
+package com.vip.apitest.luxury.magento;
+
+import static com.jayway.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItem;
+
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.List;
+
+import org.databene.benerator.anno.Source;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import com.vip.apitest.luxury.BaseTestCase;
+import com.vip.apitest.luxury.common.CommonMethod;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class CartUpdateTest extends BaseTestCase{
+
+	static List<Integer> itemId = null;
+
+	@BeforeClass
+	public static void init() throws Exception{
+		try {
+			CommonMethod.getUidAndToken();
+			CommonMethod.CartAdd("48", "11");
+			itemId = CommonMethod.getItemIdOfCart();
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	@Test
+	public void testCartUpdate_right() throws UnsupportedEncodingException {
+		System.out.println("更新商品到购物车中");
+		
+		System.out.println("{\"products\": [{\"item_id\": " + itemId.get(0) + ",\"qty\": 2 }]}");
+		
+		given().
+			body("{\"products\": [{\"item_id\": " + itemId.get(0) + ",\"qty\": 2 }]}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").
+		when().
+			put(CommonMethod.magento_uri+"/api/rest/checkout/carts/user?method=update").
+		then().
+			statusCode(200).
+			body("code", equalTo(1)).
+			body("data.msg", equalTo("success"));
+
+	}
+	
+	@Test
+	@Source("data/magento/cart_update_itemId.csv")
+	public void testCartUpdate_itemId_error(String testname, String item_id, String qty, int code, String msg) throws UnsupportedEncodingException {
+		System.out.println(testname);
+		given().
+			body("{\"products\": [{\"item_id\": "+item_id+",\"qty\": "+qty+"}]}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").
+		when().
+			put(CommonMethod.magento_uri+"/api/rest/checkout/carts/user?method=update").
+		then().
+			body("data.error.code", hasItem(code)).
+			body("data.error.message", hasItem(msg));
+	}
+	
+	@Test
+	@Source("data/magento/cart_update_qty.csv")
+	public void testCartUpdate_qty_error(String testname, String qty, int code, String msg) throws UnsupportedEncodingException {
+		System.out.println(testname);
+		given().
+			body("{\"products\": [{\"item_id\": " + itemId.get(0) + ",\"qty\": " + qty + "}]}").
+			header("accesstoken", CommonMethod.token).
+			header("Content-Type", "application/json; charset=utf-8").
+		when().
+			put(CommonMethod.magento_uri+"/api/rest/checkout/carts/user?method=update").
+		then().
+			body("data.error.code", hasItem(code)).
+			body("data.error.message", hasItem(msg));
+	}
+	
+	@AfterClass
+	public static void afterClass(){
+		CommonMethod.cartDelete();
+	}
+}

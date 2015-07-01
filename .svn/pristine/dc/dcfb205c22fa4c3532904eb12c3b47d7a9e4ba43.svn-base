@@ -1,0 +1,18 @@
+﻿testName,sign,appId,brand_id,code,msg
+sign字段为空时,,10002,1001,0,接口未加签
+sign字段输入空格, ,10002,1001,0,签名错误
+sign字段输入不存在的值,234123,10002,1001,0,签名错误
+sign字段输入正确的sign去掉最后一位,b730cfad830e5cdbbbd2804cd13ae82,10002,1001,0,签名错误
+sign字段输入正确的sign加一位,b730cfad830e5cdbbbd2804cd13ae8273,10002,1001,0,签名错误
+appid字段为空时,b730cfad830e5cdbbbd2804cd13ae827,,1001,0,appid为空
+appid字段输入空格,b730cfad830e5cdbbbd2804cd13ae827, ,1001,0,appid错误
+appid字段输入特殊字符,b730cfad830e5cdbbbd2804cd13ae827,"^%&/.,",1001,0,appid错误
+appid字段输入数字+字母的值,b730cfad830e5cdbbbd2804cd13ae827,345ert,1001,0,appid错误
+appid字段输入正确值中间带一空格,b730cfad830e5cdbbbd2804cd13ae827,10 002,1001,0,appid错误
+brand_id字段为空,b730cfad830e5cdbbbd2804cd13ae827,10002,,0,品牌id为空
+brand_id字段输入空格,b730cfad830e5cdbbbd2804cd13ae827,10002, ,0,品牌id格式错误
+brand_id字段输入字母,b730cfad830e5cdbbbd2804cd13ae827,10002,aaqzzz,0,品牌id格式错误
+brand_id字段输入特殊符号,b730cfad830e5cdbbbd2804cd13ae827,10002,`001{,0,品牌id格式错误
+brand_id字段输入超长的数字,b730cfad830e5cdbbbd2804cd13ae827,10002,99999999999999999999,0,品牌id格式错误
+brand_id字段输入不存在的id,b730cfad830e5cdbbbd2804cd13ae827,10002,995995,1,""
+

@@ -1,0 +1,381 @@
+package com.vip.apitest.luxury.common;
+
+import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.path.json.JsonPath.with;
+import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.notNullValue;
+
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.vip.apitest.utility.GetDate;
+import com.vip.apitest.utility.MD5Encoder;
+import com.vip.apitest.utility.MagentoDB;
+
+public class CommonMethod {
+		
+	public static final String appid = "10001"; 
+	public static String token;// = "688b0ed90a119c0597ad0590977a309a52b5f3e9"
+	public static int uid;// = "12485341"
+	public static String vlife_uri = "http://mapp.vipfashion.com/oi";
+	public static String magento_uri = "http://shop-mapp.vipfashion.com";
+	
+	
+	public static void getUidAndToken() throws Exception{
+		User userInfo = getUserInfo("viptest007@vip.com", "vipshop123456");
+		uid = userInfo.userId;
+		token = userInfo.token;
+		System.out.println(uid+":"+token);
+	}
+	
+	
+	/**
+	 * 根据账户、密码和邀请码获取用户uid和token
+	 * @param userName 账户
+	 * @param password 密码
+	 * @param code 邀请码
+	 * @return	map类型的uid和token
+	 * @throws Exception
+	 */
+    public static User getUserInfo(String userName, String passWord) throws Exception {
+        String md5Password = MD5Encoder.encodeByMD5(passWord, MessageDigest.getInstance("MD5"));
+
+        String requestStr = "{";
+        requestStr += "\"" + "username" + "\":" + "\"" + userName + "\"" + ",";
+        requestStr += "\"" + "password" + "\":" + "\"" + md5Password + "\"" + ",";
+        requestStr += "\"" + "invite_code" + "\":" + "\"" + MagentoDB.getAvaliableInviteCode() + "\"";
+        requestStr += "}";
+
+        String loginResponse = given().
+                body(requestStr).
+                header("appid", "10001").
+                header("Content-Type", "application/json; charset=utf-8").
+        when().
+                post("http://shop-mapp.vipfashion.com/api/rest/customer/login").prettyPrint();
+
+        int userId = with(loginResponse).get("data.result.user_id");
+        String token = with(loginResponse).get("data.result.access_token");
+
+        if(null != token){
+            User user = new User();
+            user.account = userName;
+            user.userId = userId;
+            user.token = token;
+
+            return user;
+        } else {
+            return null;
+        }
+  }
+	
+	/**
+	 * 获取品牌列表
+	 * @return brand_ids
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static List<String> getBrandIds() throws NoSuchAlgorithmException{
+		System.out.println("获得品牌列表的接口");
+		String sign = MD5Encoder.encodeByMD5("brand" + "show" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String str = given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("page", "1").
+			params("pagesize", "100").
+		when().
+			get(vlife_uri+"/brand/show/").asString();
+		return with(str).getList("data.data.brand_id");
+	}
+	
+	/**
+	 * 获取商品sku_id
+	 * @return sku_id
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static List<String> getSkuIds(String uid, String token) throws NoSuchAlgorithmException{
+		String sign = MD5Encoder.encodeByMD5("offline" + "info" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		
+		String json = given().
+			params("sign", sign).
+			params("appid", appid).
+			params("uid", uid).
+			params("token", token).
+		when().
+			get(vlife_uri+"/offline/info/").asString();
+		return with(json).getList("data.sku_id");
+	}
+	
+	/**
+	 * 获取城市ID
+	 * @return 城市ID
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static List<String> getCityIds(String brand_id) throws NoSuchAlgorithmException{
+		String sign = MD5Encoder.encodeByMD5("offline" + "citylist" + "viplux#123@", MessageDigest.getInstance("MD5"));
+        String json = given().
+            params("sign", sign).
+            params("appid", appid).
+            params("brand_id", brand_id).
+        when().
+            get(vlife_uri+"/offline/citylist/").asString();
+		return with(json).getList("data.city_id");
+	}
+	
+	/**
+	 * 获取店铺ID
+	 * @return 店铺ID
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static List<String> getShopIds(String city_id, String brand_id) throws NoSuchAlgorithmException{
+		String sign = MD5Encoder.encodeByMD5("offline" + "shoplist" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String json = given().
+			params("sign", sign).
+			params("appid", appid).
+			params("city_id", city_id).
+			params("brand_id", brand_id).
+		when().
+			get(vlife_uri+"/offline/shoplist/").asString();
+		return with(json).getList("data.shop_id");
+	}
+	
+	/**
+	 * 根据uid和token获取cart_id
+	 * @param uid 用户id
+	 * @param token 用户token
+	 * @return cart_ids 购物车id
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static List<String> getCartIds(String uid, String token) throws NoSuchAlgorithmException{
+		System.out.println("根据UID查看预约购物车信息");
+		String sign = MD5Encoder.encodeByMD5("offline" + "info" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String str = given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("uid", uid).
+			params("token", token).
+		when().
+			get(vlife_uri+"/offline/info/").asString();
+		return with(str).getList("data.cart_id");
+		
+	}
+	
+	/**
+	 * 添加预约购物车更新接口
+	 * @param shop_id 店铺id
+	 * @param sku_id 商品id
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static void OfflineAddCartAtion(String shop_id, String sku_id) throws NoSuchAlgorithmException{
+		System.out.println("到店预约购物车更新接口");
+		String sign = MD5Encoder.encodeByMD5("offline" + "cart" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("shop_id", shop_id).
+			params("sku_id", sku_id).
+			params("uid", uid).
+			params("subscribe_time", GetDate.getDate(1)).
+			params("token", token).
+		when().
+			get(vlife_uri+"/offline/cart/").asString();
+	}
+	
+	/**
+	 * 添加到店预约单更新接口
+	 * @param cart_ids 预约单在购物车中的Id
+	 * @param time 预约单在购物车中的时间
+	 * @throws NoSuchAlgorithmException
+	 */
+	public static void OfflineSubscribeAdd(String cart_ids, String time) throws NoSuchAlgorithmException{
+		System.out.println("到店预约单更新接口");
+		String sign = MD5Encoder.encodeByMD5("offline" + "subscribe" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("cart_ids", cart_ids).
+			params("username", "viptest007@vip.com").
+			params("phone", "13100100100").
+			params("uid", uid).
+			params("subscribe_time", time).
+			params("token", token).
+		when().
+			post(vlife_uri+"/offline/subscribe/");
+	}
+	
+	/**
+	 * 根据brandId和categoryId，查找字段类型的商品ID
+	 * @param categoryId（可为空。如为空传入“null”）
+	 * @param brandId（可为空。如为空传入“null”）
+	 * @param productType（类型为：configurable, simple, bundle）
+	 * @return
+	 */
+	public static List<Integer> getProductIds(String categoryId,String brandId,String productType){
+        System.out.println("根据brandId查看该品牌下的商品");
+        List<Integer> productIds = new ArrayList<Integer>();
+
+        if(null == brandId) brandId = "";
+        if(null == categoryId) categoryId = "";
+
+         String response = given().
+                    params("brand_id", brandId).
+                    params("category_id",categoryId).
+         when().
+                    get(magento_uri+"/api/rest/products").asString();
+
+        List<String> responseTypeIds = with(response).getList("data.products.type_id");
+        List<Integer> responseIds = with(response).getList("data.products.id");
+        for(int i = 0; i<responseTypeIds.size(); i++ ){
+            if(responseTypeIds.get(i).equals(productType)) productIds.add(responseIds.get(i));
+        }
+
+        return productIds;
+	}
+	
+	/**
+	 * 根据商品ID或许商品库存。id为多个是用,号分隔
+	 * @param productIds
+	 * @return
+	 */
+	public List<String> getProductStock(String productIds){
+		System.out.println("根据productIds查看该品牌下的库存");
+		String response = given().
+				params("brand_id", productIds).
+			when().
+				get(magento_uri+"/api/rest/productstock").prettyPrint();
+		return with(response).getList("data.qty");
+	}
+	
+	/**
+	 * 添加商品到购物车中
+	 * @param productId 商品id
+	 * @param valueId 颜色id
+	 * @throws UnsupportedEncodingException
+	 */
+	public static void CartAdd(String productId, String valueId) throws UnsupportedEncodingException {
+		System.out.println("添加商品到购物车中");
+		given().
+			body("{\"products\": [{\"id\": "+productId+",\"qty\": 1,\"super_attribute\":{\"138\": "+valueId+"}}]}").
+			header("accesstoken", token).
+			header("Content-Type", "application/json; charset=utf-8").
+		when().
+			put(magento_uri+"/api/rest/checkout/carts/user?method=add");
+	}
+	
+	/**
+	 * 获取购物车中的商品
+	 * @return item_id
+	 * @throws UnsupportedEncodingException
+	 */
+	public static List<Integer> getItemIdOfCart() throws UnsupportedEncodingException {
+		System.out.println("获取购物车中的商品");
+		String str = given().
+			header("accesstoken", token).
+		when().
+			get(magento_uri+"/api/rest/checkout/carts/user").prettyPrint();
+		return with(str).getList("data.products.item_id");
+	}
+
+    /**
+     * login with one existed user     *
+     */
+
+    public static User login() throws Exception{
+        String userName = MagentoDB.getExistedUser();
+        String md5Password = MD5Encoder.encodeByMD5("vipshop123456", MessageDigest.getInstance("MD5"));
+
+        String requestStr = "{";
+        requestStr += "\"" + "username" + "\":" + "\"" + userName + "\"" + ",";
+        requestStr += "\"" + "password" + "\":" + "\"" + md5Password + "\"" + ",";
+        requestStr += "\"" + "invite_code" + "\":" + "\"" + MagentoDB.getAvaliableInviteCode() + "\"";
+        requestStr += "}";
+
+        String loginResponse = given().
+                body(requestStr).
+                header("appid", "10001").
+                header("Content-Type", "application/json; charset=utf-8").
+        when().
+                post("http://shop-mapp.vipfashion.com/api/rest/customer/login").asString();
+
+        int userId = with(loginResponse).get("data.result.user_id");
+        String token = with(loginResponse).get("data.result.access_token");
+
+        if(null != token){
+            User user = new User();
+            user.account = userName;
+            user.userId = userId;
+            user.token = token;
+
+            return user;
+        } else {
+            return null;
+        }
+    }
+
+    /**
+     * login with one existed user     *
+     */
+
+    public static User registerNewUser() throws Exception{
+        Long currentTime = System.currentTimeMillis();
+        String userName = currentTime + "@vip.com";
+        String password = "vipshop123456";
+        String md5Password = MD5Encoder.encodeByMD5(password, MessageDigest.getInstance("MD5"));
+
+        given().relaxedHTTPSValidation().
+                params("username", userName).
+                params("password", md5Password).
+                params("gender", "1").
+                params("ip", "127.0.0.1").
+        when().
+                get("http://passport.api.vip.com/api/passport/register/register").
+                then().
+                body("expends", notNullValue()).
+                body("errorCode", equalTo(0)).
+                statusCode(200);
+
+        String requestStr = "{";
+        requestStr += "\"" + "username" + "\":" + "\"" + userName + "\"" + ",";
+        requestStr += "\"" + "password" + "\":" + "\"" + md5Password + "\"" + ",";
+        requestStr += "\"" + "invite_code" + "\":" + "\"" + MagentoDB.getAvaliableInviteCode() + "\"";
+        requestStr += "}";
+
+        String loginResponse = given().
+                body(requestStr).
+                header("appid", "10001").
+                header("Content-Type", "application/json; charset=utf-8").
+                when().
+                post("http://shop-mapp.vipfashion.com/api/rest/customer/login").asString();
+
+        int userId = with(loginResponse).get("data.result.user_id");
+        String token = with(loginResponse).get("data.result.access_token");
+
+        if(null != token){
+            User user = new User();
+            user.account = userName;
+            user.userId = userId;
+            user.token = token;
+
+            return user;
+        } else {
+            return null;
+        }
+    }
+	public static void cartDelete(){
+		given().request().
+			header("accesstoken", token).
+		when().
+			delete(magento_uri+"/api/rest/checkout/carts/user").prettyPrint();
+	}
+	
+	public static List<String> getAddressByUser(){
+		String str = given().
+			header("accesstoken",CommonMethod.token).
+		when().
+			get("http://shop-mapp.vipfashion.com/api/rest/customers/" + CommonMethod.uid + "/addresses").prettyPrint();
+		return with(str).getList("data.addresses.entity_id");
+	}
+	
+}

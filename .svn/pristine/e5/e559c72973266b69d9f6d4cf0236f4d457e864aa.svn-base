@@ -1,0 +1,4 @@
+﻿testName,brandId,categoryId,responseStatus,dataCode,data,message
+测试brandId传入错误的值,165465456,2,200,20001,brand not found,Resource not found.
+测试categoryId传入错误的值,2,231564561,200,20001,category not found,Resource not found.
+测试brandId和categoryId都传入错误的值,231346546,16545645,200,20001,category not found,Resource not found.

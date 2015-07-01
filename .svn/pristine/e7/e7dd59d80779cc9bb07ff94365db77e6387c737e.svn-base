@@ -1,0 +1,9 @@
+﻿testName,shop_ids,code,msg
+shop_ids字段传空时,,0,商店id为空
+shop_ids字段传空格, ,0,商店id为空
+shop_ids字段传前后带空格的值, 13 ,1,""
+shop_ids字段传字母,qqaazzzzz,0,查无此商店信息
+shop_ids字段传特殊字符,(*&%^$&#,0,查无此商店信息
+shop_ids字段传null,null,0,查无此商店信息
+shop_ids字段传true,true,0,查无此商店信息
+shop_ids字段传超出10位长度的值,32165498701,0,查无此商店信息

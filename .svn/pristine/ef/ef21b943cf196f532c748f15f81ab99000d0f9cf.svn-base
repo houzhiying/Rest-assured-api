@@ -1,0 +1,80 @@
+package com.vip.apitest.luxury.vlife;
+
+import static com.jayway.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+
+import org.databene.benerator.anno.Source;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import com.vip.apitest.luxury.BaseTestCase;
+import com.vip.apitest.luxury.common.CommonMethod;
+import com.vip.apitest.utility.MD5Encoder;
+import com.vip.apitest.utility.db.JDBCTemplateFactory;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class OfflineDeleteTest extends BaseTestCase{
+	 
+	static int cart_id;
+	
+	 @BeforeClass
+		public static void init(){
+			try {
+				CommonMethod.OfflineAddCartAtion("1", "3");
+				cart_id = JDBCTemplateFactory.VIPLUX_TEST.queryForInt("select id from user_cart where shop_id = '1' and sku_id = '3';");
+				System.out.println(cart_id);
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+		}
+	
+	@Test
+	public void testOfflineDeleteAtion_right() throws NoSuchAlgorithmException{
+		System.out.println("预约购物车的删除功能");
+		String sign = MD5Encoder.encodeByMD5("offline" + "delete" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("uid", CommonMethod.uid).
+			params("cart_ids", cart_id).
+			params("token", CommonMethod.token).
+		when().
+			get(CommonMethod.vlife_uri+"/offline/delete/").
+		then().
+			statusCode(200).
+			body("code", equalTo(1)).
+			body("data", equalTo("删除成功"));
+	}
+	
+	@Test
+	@Source("data/vlife/offline_delete_error.csv")
+	public void testOfflineDeleteAtion_error(String testName, String cart_ids, String uid, int code, String msg) throws NoSuchAlgorithmException{
+		System.out.println(testName);
+		String sign = MD5Encoder.encodeByMD5("offline" + "delete" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("uid", uid).
+			params("cart_ids", cart_ids).
+			params("token", CommonMethod.token).
+		when().
+			post(CommonMethod.vlife_uri+"/offline/delete/").
+		then().
+			statusCode(200).
+			body("code", equalTo(code)).
+			body("msg", equalTo(msg));
+	}
+	
+	@AfterClass
+	public static void afterClass() throws SQLException{
+		JDBCTemplateFactory.VIPLUX_TEST.execute("delete from user_cart where shop_id = '1' and sku_id = '3';");
+		JDBCTemplateFactory.VIPLUX_TEST.getDataSource().getConnection().close();
+	}
+}

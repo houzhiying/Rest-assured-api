@@ -1,0 +1,45 @@
+package com.vip.apitest.luxury.vlife;
+
+import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.io.InputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import org.junit.Before;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import com.jayway.restassured.RestAssured;
+import com.vip.apitest.utility.MD5Encoder;
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class SystemSetupTest {
+	
+	@Before
+	public void setUp(){
+		RestAssured.baseURI = "http://mapp.vipfashion.com/oi";
+		RestAssured.port = 80;
+	}
+	
+	@Test
+	public void testSystemSetupAtion() throws NoSuchAlgorithmException{
+		System.out.println("是否开启在线预约和在线购买和版本号");
+		InputStream jsonschema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/system_setup.json");
+		String sign = MD5Encoder.encodeByMD5("system" + "setup" + "viplux#123@", MessageDigest.getInstance("MD5"));
+        given().
+            params("sign", sign).
+            params("appid", "10001").
+        when().
+            get("/system/setup/").
+        then().
+        	statusCode(200).
+        	body("code", equalTo(1)).
+        	body("data.subscribe",equalTo("1")).
+        	body("data.buy",equalTo("1")).
+        	body(matchesJsonSchema(jsonschema));
+	}
+}

@@ -1,0 +1,15 @@
+﻿testName,sku_id,city_id,code,msg
+sku_id字段传空时,,1,0,sku_id为空
+sku_id字段传空格, ,1,0,sku_id参数格式错误
+sku_id字段传前后带空格的值, 7 ,1,0,sku_id参数格式错误
+sku_id字段传字母,qqaazzzzz,1,0,sku_id参数格式错误
+sku_id字段传特殊字符,?><*^%&$#,1,0,sku_id参数格式错误
+sku_id字段传null,null,1,0,sku_id参数格式错误
+sku_id字段传true,true,1,0,sku_id参数格式错误
+city_id字段传空时,7,,0,city_id为空
+city_id字段传空格,7, ,0,city_id参数格式错误
+city_id字段传前后带空格的值,7, 1 ,0,city_id参数格式错误
+city_id字段传字母,7,qqwweerr,0,city_id参数格式错误
+city_id字段传特殊字符,7,&^%^@%^@~`,0,city_id参数格式错误
+city_id字段传null,7,null,0,city_id参数格式错误
+city_id字段传true,7,true,0,city_id参数格式错误

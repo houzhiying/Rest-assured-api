@@ -1,0 +1,46 @@
+package com.vip.apitest.utility.db;
+
+
+
+import javax.sql.DataSource;
+
+import org.apache.commons.dbcp.BasicDataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+
+public class JDBCTemplateFactory {
+    private static final String MYSQL_JDBC_DRIVER_MYSQL_DRIVER = "com.mysql.jdbc.Driver";
+    public static final JdbcTemplate VIPLUX_TEST;
+    public static final JdbcTemplate VIPLUX_TEST_MGT;
+
+    public static DataSource getDataSourceVIPLUX_TEST(String dbname) {
+        String HJBILL_DB_URL = "jdbc:mysql://192.168.201.122/" + dbname;
+        BasicDataSource MALL_DS = new BasicDataSource();
+        MALL_DS.setUrl(HJBILL_DB_URL);
+        MALL_DS.setDriverClassName(MYSQL_JDBC_DRIVER_MYSQL_DRIVER);
+        MALL_DS.setUsername("vipshop");
+        MALL_DS.setPassword("dWwkv%+!1cQf$FNy");
+        return MALL_DS;
+    }
+    
+    
+
+    public static JdbcTemplate getTemplateVIPLUX_TEST(String dbname) {
+        DataSource ds = getDataSourceVIPLUX_TEST(dbname);
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(ds);
+        return jdbcTemplate;
+    }
+
+    public static JdbcTemplate getTemplateFromDataSource(DataSource dataSource) {
+        JdbcTemplate jdbcTemplate = new JdbcTemplate();
+        jdbcTemplate.setDataSource(dataSource);
+        return jdbcTemplate;
+    }
+
+    static {   
+    	VIPLUX_TEST = getTemplateVIPLUX_TEST("vipfashion");
+    	VIPLUX_TEST_MGT = getTemplateVIPLUX_TEST("vipfashion_magento");
+        
+    }
+}

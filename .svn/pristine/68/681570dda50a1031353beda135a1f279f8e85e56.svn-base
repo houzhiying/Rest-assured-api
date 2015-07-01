@@ -1,0 +1,35 @@
+package com.vip.apitest.luxury.vlife;
+
+import static com.jayway.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import org.junit.Test;
+
+import com.vip.apitest.luxury.common.CommonMethod;
+import com.vip.apitest.utility.MD5Encoder;
+
+public class SystemMessageTest {
+
+	@Test
+	public void testSystemMessage() throws NoSuchAlgorithmException{
+		
+		System.out.println("短信验证接口");
+		String sign = MD5Encoder.encodeByMD5("system" + "message" + "viplux#123@", MessageDigest.getInstance("MD5"));
+        given().
+            params("sign", sign).
+            params("appid", CommonMethod.appid).
+            params("phone", "18501775978").
+            params("code", "xu9lg").
+            params("uid", CommonMethod.uid).
+            params("token", CommonMethod.token).
+        when().
+            get(CommonMethod.vlife_uri + "/system/message/").
+        then().
+        	statusCode(200).
+        	body("code", equalTo(1)).
+        	body("data",equalTo("校验成功"));
+	}
+}

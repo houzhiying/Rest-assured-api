@@ -1,0 +1,19 @@
+firstName,lastName,city,telephone,street,delivery_time_type,country_id,postCode,is_default_shipping,code,message
+,zzz,上海市,15050505050,["上海市普陀区"],1,CN,200000,true,1,""
+zzz,,上海市,15050505050,["上海市普陀区"],1,CN,200000,true,400,Last Name
+zzz,aaa,,15050505050,["上海市普陀区"],1,CN,200000,true,1,""
+zzz,aaa,上海市,,["上海市普陀区"],1,CN,200000,true,400,Telephone
+zzz,aaa,上海市,15010101010,[],1,CN,200000,true,0,Street Address
+zzz,aaa,上海市,15050505050,["上海市普陀区"],,CN,200000,true,1,""
+zzz,aaa,上海市,15050505050,["上海市普陀区"],1,,200000,true,1,""
+zzz,aaa,上海市,15050505050,["上海市普陀区"],1,CN,,true,1,""
+zzz,aaa,上海市,15050505050,["上海市普陀区"],1,CN,200000,,400,Decoding failed: Syntax error
+ ,zzz,上海市,15050505050,["上海市普陀区"],1,CN,200000,true,1,""
+azaz, ,上海市,15050505050,["上海市普陀区"],1,CN,200000,true,400,Last Name
+azaz,bbb, ,15050505050,["上海市普陀区"],1,CN,200000,true,400,City
+azaz,ccc,上海市,,["上海市普陀区"],1,CN,200000,true,400,Telephone
+azaz,zzz,上海市,15050505050,[ ],1,CN,200000,true,400,Street Address
+azaz,zzz,上海市,15050505050,,1,CN,200000,true,0,Decoding failed: Syntax error
+azaz,dss,上海市,15050505050,["上海市普陀区"],1, ,200000,true,1,""
+azaz,dss,上海市,15050505050,["上海市普陀区"],1,CN,200000, ,0,Decoding failed: Syntax error
+

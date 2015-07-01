@@ -1,0 +1,146 @@
+package com.vip.apitest.luxury.vlife;
+
+import static com.jayway.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import org.databene.benerator.anno.Source;
+import org.junit.BeforeClass;
+import org.junit.FixMethodOrder;
+import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
+import com.vip.apitest.luxury.BaseTestCase;
+import com.vip.apitest.luxury.common.CommonMethod;
+import com.vip.apitest.utility.MD5Encoder;
+
+
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
+public class SystemFeedbackTest extends BaseTestCase{
+	
+	@BeforeClass
+	public static void init() throws Exception{
+		CommonMethod.getUidAndToken();
+	}
+	
+	@Test
+	@Source("data/vlife/feedback.csv")
+	public void test02SystemFeedbackAtion(String testName,String uid,String suggest,String contact,int responseStatus,int dataStatus, String data, String msg) throws NoSuchAlgorithmException{
+		System.out.println(testName);
+		String sign = MD5Encoder.encodeByMD5("system" + "feedback" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String uri = "/system/feedback/" +
+				"sign=" + sign +
+				"&appid=10001" +
+				"&uid=" + uid +
+				"&token=aa538f678ffa7d459b0bdaeca498200d9589780d";
+		given().
+			body("{\"contact\":\"" + contact + "\",\"suggest\":\"" + suggest + "\"}").
+		when().
+			post(CommonMethod.vlife_uri + uri).
+		then().
+			statusCode(responseStatus).
+			body("code", equalTo(dataStatus)).
+			body("data", equalTo(data)).
+			body("msg", equalTo(msg));
+			
+		}
+	
+	@Test
+	@Source("data/vlife/feedback_error.csv")
+	public void testSystemFeedbackErrorAtion(String testName,String uid,String suggest,String contact,int responseStatus,int dataStatus, String data, String msg) throws NoSuchAlgorithmException{
+		System.out.println(testName);
+		String sign = MD5Encoder.encodeByMD5("system" + "feedback" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String uri = "/system/feedback/" +
+				"sign=" + sign +
+				"&appid=10001" +
+				"&uid=" + uid +
+				"&token=aa538f678ffa7d459b0bdaeca498200d9589780d";
+		given().
+			body("{\"contact\":\"" + contact + "\",\"suggest\":\"" + suggest + "\"}").
+		when().
+			post(CommonMethod.vlife_uri + uri).
+		then().
+			statusCode(responseStatus).
+			body("code", equalTo(dataStatus)).
+//			body("data", equalTo(data)).
+			body("msg", equalTo(msg));
+			
+		}
+	
+	
+	@Test
+	public void testSystemFeedbackAtion() throws NoSuchAlgorithmException{
+		System.out.println("测试正常提交反馈信息");
+		String sign = MD5Encoder.encodeByMD5("system" + "feedback" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String uri = "/system/feedback/" +
+				"sign=" + sign +
+				"&appid=10001" +
+				"&uid=12485424" +
+				"&token=aa538f678ffa7d459b0bdaeca498200d9589780d";
+		given().
+			body("{\"contact\":\"1212\",\"suggest\":\"32323232\"}").
+		when().
+			post(CommonMethod.vlife_uri + uri).
+		then().
+			statusCode(200).
+			body("code", equalTo(1)).
+			body("data", equalTo("操作成功!"));
+		}
+	
+	@Test
+	public void testSystemFeedbackNoSuggestAtion() throws NoSuchAlgorithmException{
+		System.out.println("测试不传Suggest字段");
+		String sign = MD5Encoder.encodeByMD5("system" + "feedback" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String uri = "/system/feedback/" +
+				"sign=" + sign +
+				"&appid=10001" +
+				"&token=aa538f678ffa7d459b0bdaeca498200d9589780d";
+		given().
+			body("{\"contact\":\"1212\"}").
+		when().
+			post(CommonMethod.vlife_uri + uri).
+		then().
+			statusCode(200).
+			body("code", equalTo(0)).
+			body("msg",equalTo("uid参数未传递"));
+		}
+	
+	@Test
+	public void testSystemFeedbackNoUidAtion() throws NoSuchAlgorithmException{
+		System.out.println("测试不传Uid字段");
+		String sign = MD5Encoder.encodeByMD5("system" + "feedback" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String uri = "/system/feedback/" +
+				"sign=" + sign +
+				"&appid=10001" +
+				"&token=aa538f678ffa7d459b0bdaeca498200d9589780d";
+		given().
+			body("{\"contact\":\"1212\",\"suggest\":\"32323232\"}").
+		when().
+			post(CommonMethod.vlife_uri + uri).
+		then().
+			statusCode(200).
+			body("code", equalTo(0)).
+			body("msg",equalTo("uid参数未传递"));
+		}
+	
+	@Test
+	public void testSystemFeedbackNoContactAtion() throws NoSuchAlgorithmException{
+		System.out.println("测试不传Contact字段");
+		String sign = MD5Encoder.encodeByMD5("system" + "feedback" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		String uri = "/system/feedback/" +
+				"sign=" + sign +
+				"&appid=10001" +
+				"&uid=12485424" +
+				"&token=aa538f678ffa7d459b0bdaeca498200d9589780d";
+		given().
+			body("{\"suggest\":\"32323232\"}").
+		when().
+			post(CommonMethod.vlife_uri + uri).
+		then().
+			statusCode(200).
+			body("code", equalTo(0)).
+			body("msg",equalTo("联系方式不能为空!"));
+		}
+}

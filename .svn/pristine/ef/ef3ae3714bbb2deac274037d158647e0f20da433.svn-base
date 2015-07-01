@@ -1,0 +1,75 @@
+package com.vip.apitest.luxury.vlife;
+
+import static com.jayway.restassured.RestAssured.given;
+import static com.jayway.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchema;
+import static org.hamcrest.Matchers.equalTo;
+
+import java.io.InputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.sql.SQLException;
+
+import org.databene.benerator.anno.Source;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.vip.apitest.luxury.BaseTestCase;
+import com.vip.apitest.luxury.common.CommonMethod;
+import com.vip.apitest.utility.MD5Encoder;
+import com.vip.apitest.utility.db.JDBCTemplateFactory;
+
+public class OfflineInfoTest extends BaseTestCase {
+	 
+	 @BeforeClass
+		public static void init(){
+			try {
+				CommonMethod.OfflineAddCartAtion("13", "7");
+			} catch (NoSuchAlgorithmException e) {
+				e.printStackTrace();
+			}
+		}
+	
+	@Test
+	public void testOfflineInfoAtion_right() throws NoSuchAlgorithmException{
+		System.out.println("根据UID查看预约购物车信息");
+		InputStream jsonSchema = Thread.currentThread().getContextClassLoader().getResourceAsStream("json/offline_info.json");
+		String sign = MD5Encoder.encodeByMD5("offline" + "info" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("uid", CommonMethod.uid).
+			params("token", CommonMethod.token).
+		when().
+			get(CommonMethod.vlife_uri+"/offline/info/").
+		then().
+			statusCode(200).
+			body("code", equalTo(1)).
+			body(matchesJsonSchema(jsonSchema));
+	}
+	
+	@Test
+	@Source("data/vlife/offline_info_error.csv")
+	public void testOfflineInfoAtion_error(String testName, String uid, int code, String msg) throws NoSuchAlgorithmException{
+		System.out.println(testName);
+		String sign = MD5Encoder.encodeByMD5("offline" + "info" + "viplux#123@", MessageDigest.getInstance("MD5"));
+		given().
+			params("sign", sign).
+			params("appid", CommonMethod.appid).
+			params("uid", uid).
+			params("token", CommonMethod.token).
+		when().
+			get(CommonMethod.vlife_uri+"/offline/info/").
+		then().
+			statusCode(200).
+			body("code", equalTo(code)).
+			body("msg", equalTo(msg));
+	}
+	
+	@AfterClass
+	public static void afterClass() throws SQLException{
+		JDBCTemplateFactory.VIPLUX_TEST.execute("delete from user_cart where shop_id = '13' and sku_id = '7';");
+		JDBCTemplateFactory.VIPLUX_TEST.getDataSource().getConnection().close();
+	}
+
+}

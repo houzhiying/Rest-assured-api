@@ -1,0 +1,4 @@
+﻿testName,brandId,categoryId,responseStatus,dataCode
+brandId为空,,2,200,1
+categoryId为空,2,,200,1
+brandId和categoryId都为空,,,200,1

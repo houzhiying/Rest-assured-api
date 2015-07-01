@@ -1,0 +1,422 @@
+{
+	"type":"object",
+	"$schema": "http://json-schema.org/draft-03/schema",
+	"id": "http://jsonschema.net",
+	"required":true,
+	"properties":{
+		"code": {
+			"type":"number",
+			"id": "http://jsonschema.net/code",
+			"required":true
+		},
+		"data": {
+			"type":"object",
+			"id": "http://jsonschema.net/data",
+			"required":true,
+			"properties":{
+				"brand_key": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/brand_key",
+					"required":true
+				},
+				"brand_name": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/brand_name",
+					"required":true
+				},
+				"category_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/category_id",
+					"required":true
+				},
+				"cfg_opts": {
+					"type":"array",
+					"id": "http://jsonschema.net/data/cfg_opts",
+					"required":true,
+					"items":[
+						{
+							"type":"object",
+							"id": "http://jsonschema.net/data/cfg_opts/0",
+							"required":true,
+							"properties":{
+								"attribute_code": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/0/attribute_code",
+									"required":true
+								},
+								"attribute_id": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/cfg_opts/0/attribute_id",
+									"required":true
+								},
+								"frontend_label": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/0/frontend_label",
+									"required":true
+								},
+								"id": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/0/id",
+									"required":true
+								},
+								"label": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/0/label",
+									"required":true
+								},
+								"position": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/0/position",
+									"required":true
+								},
+								"store_label": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/0/store_label",
+									"required":true
+								},
+								"use_default": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/0/use_default",
+									"required":true
+								},
+								"values": {
+									"type":"array",
+									"id": "http://jsonschema.net/data/cfg_opts/0/values",
+									"required":true,
+									"items":
+										{
+											"type":"object",
+											"id": "http://jsonschema.net/data/cfg_opts/0/values/0",
+											"required":true,
+											"properties":{
+												"attrImage": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/attrImage",
+													"required":true
+												},
+												"default_label": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/default_label",
+													"required":true
+												},
+												"images": {
+													"type":"array",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/images",
+													"required":true,
+													"items":
+														{
+															"type":"string",
+															"id": "http://jsonschema.net/data/cfg_opts/0/values/0/images/0",
+															"required":true
+														}
+													
+
+												},
+												"is_percent": {
+													"type":"number",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/is_percent",
+													"required":true
+												},
+												"label": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/label",
+													"required":true
+												},
+												"pricing_value": {
+													"type":"null",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/pricing_value",
+													"required":true
+												},
+												"product_super_attribute_id": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/product_super_attribute_id",
+													"required":true
+												},
+												"store_label": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/store_label",
+													"required":true
+												},
+												"use_default_value": {
+													"type":"boolean",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/use_default_value",
+													"required":true
+												},
+												"value_index": {
+													"type":"number",
+													"id": "http://jsonschema.net/data/cfg_opts/0/values/0/value_index",
+													"required":true
+												}
+											}
+										}
+									
+
+								}
+							}
+						},
+						{
+							"type":"object",
+							"id": "http://jsonschema.net/data/cfg_opts/1",
+							"required":true,
+							"properties":{
+								"attribute_code": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/1/attribute_code",
+									"required":true
+								},
+								"attribute_id": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/cfg_opts/1/attribute_id",
+									"required":true
+								},
+								"frontend_label": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/1/frontend_label",
+									"required":true
+								},
+								"id": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/1/id",
+									"required":true
+								},
+								"label": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/1/label",
+									"required":true
+								},
+								"position": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/1/position",
+									"required":true
+								},
+								"store_label": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/1/store_label",
+									"required":true
+								},
+								"use_default": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/cfg_opts/1/use_default",
+									"required":true
+								},
+								"values": {
+									"type":"array",
+									"id": "http://jsonschema.net/data/cfg_opts/1/values",
+									"required":true,
+									"items":
+										{
+											"type":"object",
+											"id": "http://jsonschema.net/data/cfg_opts/1/values/0",
+											"required":true,
+											"properties":{
+												"default_label": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/default_label",
+													"required":true
+												},
+												"is_percent": {
+													"type":"number",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/is_percent",
+													"required":true
+												},
+												"label": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/label",
+													"required":true
+												},
+												"pricing_value": {
+													"type":"null",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/pricing_value",
+													"required":true
+												},
+												"product_super_attribute_id": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/product_super_attribute_id",
+													"required":true
+												},
+												"store_label": {
+													"type":"string",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/store_label",
+													"required":true
+												},
+												"use_default_value": {
+													"type":"boolean",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/use_default_value",
+													"required":true
+												},
+												"value_index": {
+													"type":"number",
+													"id": "http://jsonschema.net/data/cfg_opts/1/values/0/value_index",
+													"required":true
+												}
+											}
+										}
+									
+
+								}
+							}
+						}
+					]
+				},
+				"childProducts": {
+					"type":"array",
+					"id": "http://jsonschema.net/data/childProducts",
+					"required":true,
+					"items":
+						{
+							"type":"object",
+							"id": "http://jsonschema.net/data/childProducts/0",
+							"required":true,
+							"properties":{
+								"color": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/childProducts/0/color",
+									"required":true
+								},
+								"id": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/childProducts/0/id",
+									"required":true
+								},
+								"is_in_stock": {
+									"type":"boolean",
+									"id": "http://jsonschema.net/data/childProducts/0/is_in_stock",
+									"required":true
+								},
+								"is_salable": {
+									"type":"boolean",
+									"id": "http://jsonschema.net/data/childProducts/0/is_salable",
+									"required":true
+								},
+								"size": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/childProducts/0/size",
+									"required":true
+								},
+								"sku": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/childProducts/0/sku",
+									"required":true
+								},
+								"stockQty": {
+									"type":"number",
+									"id": "http://jsonschema.net/data/childProducts/0/stockQty",
+									"required":true
+								}
+							}
+						}
+					
+
+				},
+				"detail_desc": {
+					"type":"array",
+					"id": "http://jsonschema.net/data/detail_desc",
+					"required":true,
+					"items":
+						{
+							"type":"object",
+							"id": "http://jsonschema.net/data/detail_desc/0",
+							"required":true,
+							"properties":{
+								"name": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/detail_desc/0/name",
+									"required":true
+								},
+								"value": {
+									"type":"string",
+									"id": "http://jsonschema.net/data/detail_desc/0/value",
+									"required":true
+								}
+							}
+						}
+					
+
+				},
+				"discount": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/discount",
+					"required":true
+				},
+				"final_price": {
+					"type":"number",
+					"id": "http://jsonschema.net/data/final_price",
+					"required":true
+				},
+				"id": {
+					"type":"number",
+					"id": "http://jsonschema.net/data/id",
+					"required":true
+				},
+				"img_urls": {
+					"type":"array",
+					"id": "http://jsonschema.net/data/img_urls",
+					"required":true,
+					"items":
+						{
+							"type":"string",
+							"id": "http://jsonschema.net/data/img_urls/0",
+							"required":true
+						}
+					
+
+				},
+				"is_favorited": {
+					"type":"boolean",
+					"id": "http://jsonschema.net/data/is_favorited",
+					"required":true
+				},
+				"is_in_stock": {
+					"type":"boolean",
+					"id": "http://jsonschema.net/data/is_in_stock",
+					"required":true
+				},
+				"is_salable": {
+					"type":"boolean",
+					"id": "http://jsonschema.net/data/is_salable",
+					"required":true
+				},
+				"name": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/name",
+					"required":true
+				},
+				"regular_price": {
+					"type":"number",
+					"id": "http://jsonschema.net/data/regular_price",
+					"required":true
+				},
+				"size_image": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/size_image",
+					"required":false
+				},
+				"sku": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/sku",
+					"required":true
+				},
+				"type_id": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/type_id",
+					"required":true
+				},
+				"updated_at": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/updated_at",
+					"required":true
+				},
+				"url": {
+					"type":"string",
+					"id": "http://jsonschema.net/data/url",
+					"required":true
+				}
+			}
+		},
+		"msg": {
+			"type":"string",
+			"id": "http://jsonschema.net/msg",
+			"required":false
+		}
+	}
+}
