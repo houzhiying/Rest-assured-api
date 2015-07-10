@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.lufax.qa</groupId>
-	<artifactId>lufaxapitest</artifactId>
+	<artifactId>RestApiAutoTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
