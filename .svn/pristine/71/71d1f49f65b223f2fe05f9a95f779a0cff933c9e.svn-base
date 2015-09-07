@@ -1,9 +1,0 @@
-package com.vip.apitest.utility.db;
-
-public class Consts {
-	
-	public static final String DB_URL="jdbc:mysql://192.168.201.122/";
-	public static final String DB_USERNAME="vipshop";
-	public static final String DB_PASSWORD="dWwkv%+!1cQf$FNy";
-
-}

@@ -1,5 +1,0 @@
-﻿testName,uid,suggest,contact,responseStatus,dataCode,data,msg
-反馈的意见为空（suggest传入空值）,12485424,,13258695685,200,0,,建议内容不能为空!
-uid传入空值,,test uid传入空值,13255184885,200,0,,uid为空
-contact传入空值,12485424,test contact传入空值,,200,0,,联系方式不能为空!
-uid传入错误的值,321221,test uid传入错误的值,13255184885,200,0,"",uid不匹配

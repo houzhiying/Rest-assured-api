@@ -1,3 +1,0 @@
-﻿testname,id,pty,attribute_id,value_id,accesstoken,code,msg
-id字段传null,null,1,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,20001,wrong id
-id字段传true,true,1,15,13,688b0ed90a119c0597ad0590977a309a52b5f3e9,20001,wrong product id: 1

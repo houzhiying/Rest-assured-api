@@ -1,7 +1,0 @@
-﻿testName,sku_ids,code,msg
-sku_ids字段传空时,,0,sku_ids参数为空
-sku_ids字段传空格, ,0,sku_ids参数为空
-sku_ids字段传字母,qwe,0,sku_ids参数格式错误
-sku_ids字段传特殊字符,(&&$#,0,sku_ids参数格式错误
-sku_ids字段传null,null,0,sku_ids参数格式错误
-sku_ids字段传true,true,0,sku_ids参数格式错误

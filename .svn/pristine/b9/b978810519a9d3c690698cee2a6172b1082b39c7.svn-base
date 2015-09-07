@@ -1,3 +1,0 @@
-﻿testName,productID,responseStatus,dataCode,message
-probuct id传入空值,,200,1,,
-probuct id传入错误的值,2121sdfsd,200,20001,Resource not found.

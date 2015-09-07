@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<dataset>
-  <brand brand_id="1001" name="sjhtest" title="sjhtest_title" sort="1" thumbnail = "http://img13.meitudata.com/201402/8/qv1671az3b7wyj2vqy.jpg!thumb235" publish="1" add_time="2014-06-11 21:36:19" update_time="2014-06-18 10:05:35"/>
-  <brand_shop bsid="1" shop_id="1" brand_id="1001" city_id="1" update_time="2014-06-18 10:05:35" add_time="2014-06-11 21:36:19"/>
-</dataset>

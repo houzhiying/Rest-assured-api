@@ -1,9 +1,0 @@
-﻿testName,cart_ids,uid,code,msg
-cart_id字段传空时,,12485424,0,cart_ids为空
-cart_id字段传空格, ,12485424,0,cart_ids为空
-cart_id字段传字母,qqaazzzzz,12485424,0,删除失败
-cart_id字段传特殊字符,?><*^%&$#,12485424,0,删除失败
-cart_id字段传null,null,12485424,0,删除失败
-cart_id字段传true,true,12485424,0,删除失败
-cart_id字段传不存在的cart_id,999099,12485424,0,删除失败
-cart_id字段传超出20位长度的值,101010101020202000000,12485424,0,删除失败

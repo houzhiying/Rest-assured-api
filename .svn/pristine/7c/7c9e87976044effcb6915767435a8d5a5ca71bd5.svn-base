@@ -1,5 +1,0 @@
-﻿testname,item_id,pty,code,msg
-tiem_id字段传空值,,2,0,Decoding failed: Syntax error
-tiem_id字段传空格, ,2,0,Decoding failed: Syntax error
-tiem_id字段传字母,zzzz,2,0,Decoding failed: Syntax error
-tiem_id字段传特殊字符,(*^%&%^$#(&)_,2,0,Decoding failed: Syntax error
